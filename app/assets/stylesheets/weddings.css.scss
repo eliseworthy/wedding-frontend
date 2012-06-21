@@ -1,3 +1,29 @@
-// Place all the styles related to the weddings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  background:  
+    -webkit-linear-gradient(315deg, #DCF7F3 25%, transparent 25%) -20px 0,
+    -webkit-linear-gradient(225deg, #DCF7F3 25%, transparent 25%) -20px 0,
+    -webkit-linear-gradient(135deg, #DCF7F3 25%, transparent 25%),
+    -webkit-linear-gradient(45deg, #DCF7F3 25%, transparent 25%); 
+    background-size: 40px 4px;
+    background-color: #805841;
+}
+
+.wedding-list {
+  background-color: white;
+  border-top: 1px solid brown;
+  border-bottom: 1px solid brown;
+}
+.navigation {
+  padding: 20px;
+  margin-bottom: 30px;
+  height: 60px;
+  background-color: #FFFCDD;
+  -webkit-box-shadow: 0 4px 2px -2px #F5A2A2;
+}
+
+.navigation h1 {
+  color: #805841;
+  font-family: helvetica, arial, sans-serif;
+
+}
+

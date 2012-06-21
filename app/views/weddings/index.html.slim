@@ -1,0 +1,8 @@
+.container
+  .row
+    .wedding-list.ninecol
+      = @weddings.each do |wedding|
+        = wedding['name'] 
+        = wedding['description'] 
+        = wedding['created_at']
+    .threecol.last    
