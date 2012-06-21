@@ -1,4 +1,5 @@
 WeddingFrontend::Application.routes.draw do
+  resources :weddings
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'wedding_api', :git => 'git://github.com/eliseworthy/wedding-api.git', :tag => "v0.0.2"
-
+gem 'httparty'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
