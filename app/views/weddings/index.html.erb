@@ -1,5 +1,7 @@
 <h1>hi!</h1>
 
-<% @weddings.each do |wedding| %>
-  <h1>wedding found!</h1>
-  <% end %>
+<%= @weddings.each do |wedding| %>
+  <%= wedding['name'] %>
+  <%= wedding['description'] %>
+  <%= wedding['created_at'] %>
+<%end%>
