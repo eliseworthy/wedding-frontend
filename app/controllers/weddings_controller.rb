@@ -1,5 +1,7 @@
 class WeddingsController < ApplicationController
 
+  before_filter :authorize, only: [:edit, :update, :create, :show, :destroy]
+
   def index
     @weddings = WeddingRequest.find_all
     unless @weddings.respond_to?(:each)
@@ -9,9 +11,7 @@ class WeddingsController < ApplicationController
 
   def show
     @wedding = WeddingRequest.find(params[:id])
-    unless @wedding.is_a?(Wedding)
-      redirect_to root_path, flash[:error] = @wedding["error"]
-    end
+    @items =  ItemRequest.find_all_by_user_and_category(@wedding.id, 1)
   end
 
   def create

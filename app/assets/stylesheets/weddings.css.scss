@@ -4,42 +4,12 @@ body {
   background-size: 50px;
   font-family: helvetica, arial, sans-serif;
 }
-.wedding {
-  padding-left: 10px;
-  border-top: 1px dotted #E880A2;
-  border-bottom: 1px dotted #E880A2;
-  border-right: 1px dotted #E880A2;
-    -webkit-box-shadow: 0 4px 2px -2px lightgray;
-  margin-bottom: 30px;
-  min-height: 150px;
-  background: url("http://www.simplyjessie.com/wp-content/uploads/2011/06/Outdoor-Garden-Wedding-in-Chicago-150x150.jpg") no-repeat left #FBF8F5;
-  position: relative;
-  h2{
-    margin-top: 10px;
-    margin-left: 160px;
-      color: #9F937D;
-  }
-  p {
-    margin-top: 10px;
-    margin-left: 170px;
-    color: gray;
-  }
-}
-
-.time {
-  text-align: right;
-  margin-right: 10px;
-  position: absolute; bottom: 0; right: 0;
-  font-style: italic;
-  color: #C3B5AC;
-  font-size: 12px;
-  }
 
 .navigation {
   padding-bottom: 20px;
   margin-bottom: 30px;
   height: 45px;
-  background-color: #D8D9B6;
+  background-color: #B8C45A;
   border-bottom: 1px solid #B8C45A;
   -webkit-box-shadow: 0 4px 2px -2px lightgray;
   h1 {
@@ -61,4 +31,52 @@ body {
   background: #FBF8F5;
   -webkit-box-shadow: 0 4px 2px -2px lightgray;
 }
+
+//Public wedding index
+
+.bar {
+  padding-left: 10px;
+  border-top: 1px solid #E880A2;
+  border-bottom: 1px solid #E880A2;
+  border-right: 1px solid #E880A2;
+    -webkit-box-shadow: 0 4px 2px -2px lightgray;
+  margin-bottom: 30px;
+  min-height: 150px;
+  background: url("http://www.simplyjessie.com/wp-content/uploads/2011/06/Outdoor-Garden-Wedding-in-Chicago-150x150.jpg") no-repeat left #FBF8F5;
+  position: relative;
+  a {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 160px;
+    color: #9F937D;
+    text-decoration: none;
+  }
+  p {
+    margin-top: 10px;
+    margin-left: 170px;
+    color: gray;
+  }
+}
+
+.time {
+  text-align: right;
+  margin-right: 10px;
+  position: absolute; bottom: 0; right: 0;
+  font-style: italic;
+  color: #C3B5AC;
+  font-size: 12px;
+  }
+
+//Wedding show
+
+.bar {
+  h2 {
+    padding-top: 10px;
+    margin-left: 160px;
+    color: 9F937D;
+    text-decoration: none;
+  }
+}
+
 

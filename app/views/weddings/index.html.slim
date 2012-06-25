@@ -1,9 +1,9 @@
 .container
   .row
-    .wedding-list.ninecol
+    .bar-list.ninecol
         - @weddings.each do |wedding|
-          .wedding
-            h2 = wedding.name
+          .bar
+            = link_to wedding.name, wedding_path(wedding.id)
             p = wedding.description
             p.time = Time.parse(wedding.created_at).strftime("%m/%d/%Y %I:%M %p")    
     .side-nav.threecol.last    

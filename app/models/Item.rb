@@ -1,0 +1,3 @@
+class Item < OpenStruct
+  
+end
