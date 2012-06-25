@@ -2,10 +2,16 @@ class WeddingRequest
   include HTTParty
   base_uri 'http://wedding-api.herokuapp.com'
 
+  attr_accessor :flash_notice
+
   def self.find_all
     response = get('/weddings')
-    response["weddings"].map do |wedding|
-      Wedding.new(wedding)
+    if response.code == 200
+      response["weddings"].map do |wedding|
+        Wedding.new(wedding)
+      end
+    else 
+      flash_notice = "Unable to retrieve weddings."
     end
   end
 

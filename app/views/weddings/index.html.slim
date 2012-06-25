@@ -1,8 +1,9 @@
 .container
   .row
     .wedding-list.ninecol
-      = @weddings.each do |wedding|
-        = wedding.name
-        = wedding.description
-        = wedding.created_at
-    .threecol.last    
+        - @weddings.each do |wedding|
+          .wedding
+            h2 = wedding.name
+            p = wedding.description
+            p.time = Time.parse(wedding.created_at).strftime("%m/%d/%Y %I:%M %p")    
+    .side-nav.threecol.last    

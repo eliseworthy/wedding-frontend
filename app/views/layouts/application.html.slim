@@ -3,10 +3,11 @@ html
   title WeddingFrontend
   = stylesheet_link_tag    "application", :media => "all" 
   = javascript_include_tag "application" 
+  = stylesheet_link_tag href='http://fonts.googleapis.com/css?family=Berkshire+Swash' 
   = csrf_meta_tags 
   
   body
   .navigation
-    h1 SomethingBlue
+    h1 Planbook
 
   = yield 

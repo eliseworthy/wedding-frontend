@@ -8,13 +8,13 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,addre
 /* ==================================================================================================================== */
 
 .container {
-padding-left: 20px;
-padding-right: 20px;
+/*padding-left: 20px;*/
+padding-right: 3.5%;
 }
 
 .row {
 width: 100%;
-max-width: 1140px;
+/*max-width: 1140px;*/
 min-width: 755px;
 margin: 0 auto;
 overflow: hidden;
