@@ -3,6 +3,7 @@
     .bar-list.ninecol
         - @items.each do |item|
           .bar
+            
             h2 = item.name
             p = item.description
             p.time = Time.parse(item.created_at).strftime("%m/%d/%Y %I:%M %p")    

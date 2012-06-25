@@ -8,11 +8,12 @@ html
   
   body
   .navigation
-    h1 = link_to "Planbook", root_path
+    h1 = link_to "WeddingBook", root_path
     #user_header
       - if current_user 
         | Logged in as #{current_user.email}
         = link_to "Log Out", logout_path
+        = link_to "My WeddingBooks", "#"
       - else 
         = link_to "Sign Up", signup_path
         = link_to "Log In", login_path

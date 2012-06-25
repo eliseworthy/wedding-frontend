@@ -11,7 +11,7 @@ class WeddingsController < ApplicationController
 
   def show
     @wedding = WeddingRequest.find(params[:id])
-    @items =  ItemRequest.find_all_by_user_and_category(@wedding.id, 1)
+    @items =  ItemRequest.find_all_by_wedding(@wedding.id)
   end
 
   def create
