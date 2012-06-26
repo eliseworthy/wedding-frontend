@@ -68,10 +68,10 @@ WeddingFrontend::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.smtp_setting = {
+  ActionMailer::Base.smtp_settings = {
   address: "smtp.gmail.com",
   port: 587,
-  domain: "asciicasts.com",
+  domain: "bridezilla.herokuapp.com",
   authentication: "plain",
   enable_starttls_auto: true,
   user_name: ENV["EMAIL"],
