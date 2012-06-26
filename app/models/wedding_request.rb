@@ -10,7 +10,7 @@ class WeddingRequest
       response["weddings"].map do |wedding|
         Wedding.new(wedding)
       end
-    else 
+    else
       flash_notice = "Unable to retrieve weddings."
     end
   end
@@ -30,8 +30,7 @@ class WeddingRequest
   end
 
   def self.create(attributes)
-    response = post("/weddings/", query: attributes)
-    response.success?
+    post("/weddings/", query: attributes)
   end
 
   def self.destroy(id)

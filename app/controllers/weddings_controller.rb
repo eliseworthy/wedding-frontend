@@ -14,8 +14,19 @@ class WeddingsController < ApplicationController
     @items =  ItemRequest.find_all_by_wedding(@wedding.id)
   end
 
-  def create
+  def new
     @wedding = WeddingRequest.create(params[:wedding])
+  end
+
+  def create
+    params[:wedding][:user_id] = current_user.id
+    @wedding = WeddingRequest.create(params[:wedding])
+    if @wedding.success?
+      redirect_to root_path, notice: "Successfully created wedding!"
+    else
+      raise @wedding.inspect
+      render :new
+    end
   end
 
   def update

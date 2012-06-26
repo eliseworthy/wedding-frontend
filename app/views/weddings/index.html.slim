@@ -1,9 +1,7 @@
-.container
-  .row
-    #weddings.bar-list.ninecol 
-      - @weddings.each do |wedding|
-        = render "wedding", { wedding: wedding }
-      = will_paginate @weddings       
-    .side-nav.threecol.last    
+#weddings.bar-list.ninecol 
+  - @weddings.each do |wedding|
+    = render "wedding", { wedding: wedding }
+  = will_paginate @weddings       
+  
 
 
