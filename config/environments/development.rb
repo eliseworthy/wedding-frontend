@@ -47,4 +47,6 @@ WeddingFrontend::Application.configure do
   user_name: "elise.worthy@gmail.com",
   password: "elise123"
   }
+
+  ENV["REDISTOGO_URL"] = "redis://redistogo:9d53f03ea959f18e6dc58338e4b733cc@koi.redistogo.com:9396/"
 end
