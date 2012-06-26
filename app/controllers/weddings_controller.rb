@@ -3,7 +3,7 @@ class WeddingsController < ApplicationController
   before_filter :authorize, only: [:edit, :update, :create, :show, :destroy]
 
   def index
-    @weddings = WeddingRequest.find_all
+    @weddings = WeddingRequest.find_all.paginate(page: params[:page], per_page: 5)
     unless @weddings.respond_to?(:each)
       redirect_to root_path, flash[:error] = @wedding
     end

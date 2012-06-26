@@ -1,0 +1,4 @@
+.bar
+  = link_to wedding.name, wedding_path(wedding.id)
+  p = wedding.description
+  p.time = Time.parse(wedding.created_at).strftime("%m/%d/%Y %I:%M %p") 

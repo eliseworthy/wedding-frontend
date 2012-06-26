@@ -5,6 +5,7 @@ gem 'httparty'
 gem 'rspec-rails'
 gem 'slim'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'will_paginate'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -37,7 +38,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'kaminari'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

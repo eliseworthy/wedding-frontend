@@ -1,0 +1,10 @@
+<% @weddings.each do |wedding| %>
+  $('#weddings').append('<%= j render("wedding", {wedding: wedding}) %>'); 
+  <% if @weddings.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate(@weddings) %>');
+  <% else %>
+    $('.pagination').remove();
+  <% end %>
+<% end %>
+
+

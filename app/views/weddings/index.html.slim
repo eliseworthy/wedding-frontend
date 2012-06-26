@@ -1,9 +1,9 @@
 .container
   .row
-    .bar-list.ninecol
-        - @weddings.each do |wedding|
-          .bar
-            = link_to wedding.name, wedding_path(wedding.id)
-            p = wedding.description
-            p.time = Time.parse(wedding.created_at).strftime("%m/%d/%Y %I:%M %p")    
+    #weddings.bar-list.ninecol 
+      - @weddings.each do |wedding|
+        = render "wedding", { wedding: wedding }
+      = will_paginate @weddings       
     .side-nav.threecol.last    
+
+
