@@ -44,8 +44,8 @@ WeddingFrontend::Application.configure do
   domain: "asciicasts.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "elise.worthy@gmail.com",
-  password: "elise123"
+  user_name: ENV["SOAPBOX_EMAIL"],
+  password: ENV["SOAPBOX_PASSWORD"]
   }
 
   ENV["REDISTOGO_URL"] = "redis://redistogo:9d53f03ea959f18e6dc58338e4b733cc@koi.redistogo.com:9396/"
