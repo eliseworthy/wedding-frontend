@@ -9,7 +9,20 @@ class ItemRequest
     end
   end
 
-   def self.create(attributes)
+  def self.find(id)
+  	response = get("/items/#{id}")
+  	if response.success?
+      Item.new(response)
+    else
+      response
+    end
+  end
+
+  def self.create(attributes)
     post("/items/", query: {item: attributes})
+  end
+
+  def self.update(item_id, attributes)
+  	put("/items/#{item_id}", body: {item: attributes})
   end
 end

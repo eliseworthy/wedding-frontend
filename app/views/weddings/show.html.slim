@@ -6,8 +6,10 @@
           h2 = item.name
           p = item.description
           p.time = Time.parse(item.created_at).strftime("%m/%d/%Y %I:%M %p")
+          / - if @wedding.user_id == current_user.id
+          = link_to "edit", edit_item_path
       - if @wedding.user_id == current_user.id
-        = form_tag user_wedding_items_path(current_user.id, @wedding.id) do
+        = form_tag items_path do
           = label_tag("[item]name", "Title")
           = text_field_tag("[item]name")
           = label_tag("[item]description", "Description")

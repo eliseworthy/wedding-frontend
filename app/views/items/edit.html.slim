@@ -1,0 +1,8 @@
+= form_tag item_path, method: "put" do
+  = label_tag("item[name]", "Title")
+  = text_field_tag("item[name]", @item.name)
+  = label_tag("item[description]", "Description")
+  = text_field_tag("item[description]", @item.description)
+  = hidden_field_tag("item[category_id]", 1)
+  = hidden_field_tag("item[wedding_id]", @item.wedding_id)
+  = submit_tag

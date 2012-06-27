@@ -11,6 +11,8 @@ WeddingFrontend::Application.routes.draw do
     end
   end
 
+  resources :items
+
   resources :weddings
   root to: 'weddings#index'
   # The priority is based upon order of creation:

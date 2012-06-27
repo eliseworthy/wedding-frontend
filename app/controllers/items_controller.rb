@@ -14,4 +14,18 @@ class ItemsController < ApplicationController
       render "/weddings/show", notice: "no"
     end
   end
+
+  def edit
+    @item = ItemRequest.find(params[:id])
+  end
+
+  def update
+    @item = ItemRequest.update(params[:id], params[:item])
+    @wedding_id = params[:item][:wedding_id]
+    if @item.success?
+      redirect_to wedding_path(@wedding_id), notice: "Successfully updated item!"
+    else
+      redirect_to wedding_path(@wedding_id), notice: "Couldn't update"
+    end
+  end
 end
