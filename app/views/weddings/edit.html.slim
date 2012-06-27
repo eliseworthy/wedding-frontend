@@ -1,0 +1,7 @@
+= form_tag wedding_path, method: "put" do
+  = label_tag("wedding[name]", "Title")
+  = text_field_tag("wedding[name]", @wedding.name)
+  = label_tag("wedding[description]", "Description")
+  = text_field_tag("wedding[description]", @wedding.description)
+  = hidden_field_tag("wedding[user_id]", @wedding.user_id)
+  = submit_tag

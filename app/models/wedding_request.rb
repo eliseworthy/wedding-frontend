@@ -25,8 +25,7 @@ class WeddingRequest
   end
 
   def self.update(id, attributes)
-    response = put("/weddings/#{id}", query: {wedding: attributes})
-    response.success?
+    put("/weddings/#{id}", query: {wedding: attributes})
   end
 
   def self.create(attributes)

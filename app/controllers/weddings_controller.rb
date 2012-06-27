@@ -35,8 +35,21 @@ class WeddingsController < ApplicationController
     end
   end
 
+  def edit
+    @wedding = WeddingRequest.find(params[:id])
+  end
+
   def update
-    WeddingRequest.update(params[:id], params[:wedding])
+    if params[:wedding][:user_id].to_i == current_user.id
+      @wedding = WeddingRequest.update(params[:id], params[:wedding])
+      if @wedding.success?
+        redirect_to user_weddings_path(current_user.id), notice: "Successfully updated wedding!"
+      else
+        redirect_to user_weddings_path(current_user.id), notice: "Couldn't update this wedding"
+      end
+    else
+      redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
+    end
   end
 
   def destroy
