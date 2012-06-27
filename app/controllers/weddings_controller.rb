@@ -6,7 +6,7 @@ class WeddingsController < ApplicationController
     weddings = if params[:user_id]
       WeddingRequest.find_all(user_id: params[:user_id])
     else
-      WeddingRequest.find_all
+      WeddingRequest.find_all.reverse
     end
 
     @weddings = weddings.paginate(page: params[:page], per_page: 5)

@@ -1,4 +1,11 @@
 .bar
   = image_tag pin.url
   p.time = Time.parse(pin.created_at).strftime("%m/%d/%Y %I:%M %p")
+  = form_tag items_path do
+	  = hidden_field_tag("[item]name", pin.url)
+	  = hidden_field_tag("[item]description", pin.description)
+	  = hidden_field_tag("[item]category_id", 1)
+	  = label_tag "Add to Wedding:"
+	  = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
+	  = submit_tag "Add!"
 
