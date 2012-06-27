@@ -13,6 +13,7 @@ WeddingFrontend::Application.routes.draw do
 
   resources :items
   resources :pins
+  resources :honeymoons
 
   resources :weddings
   root to: 'weddings#index'

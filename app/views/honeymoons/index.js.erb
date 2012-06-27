@@ -1,0 +1,10 @@
+<% @honeymoons.each do |honeymoon| %>
+  $('#honeymoons').append('<%= j render("honeymoon", {honeymoon: honeymoon}) %>');
+  <% if @honeymoons.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate(@honeymoons) %>');
+  <% else %>
+    $('.pagination').remove();
+  <% end %>
+<% end %>
+
+

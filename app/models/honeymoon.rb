@@ -1,0 +1,3 @@
+class Honeymoon < OpenStruct
+
+end
