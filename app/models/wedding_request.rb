@@ -34,6 +34,5 @@ class WeddingRequest
 
   def self.destroy(id)
     response = delete("/weddings/#{id}")
-    response.success?
   end
 end

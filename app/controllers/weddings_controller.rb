@@ -29,7 +29,7 @@ class WeddingsController < ApplicationController
     params[:wedding][:user_id] = current_user.id
     @wedding = WeddingRequest.create(params[:wedding])
     if @wedding.success?
-      redirect_to root_path, notice: "Successfully created wedding!"
+      redirect_to user_weddings_path(current_user.id), notice: "Successfully created wedding!"
     else
       render :new
     end
@@ -53,7 +53,16 @@ class WeddingsController < ApplicationController
   end
 
   def destroy
-    @wedding = WeddingRequest.destroy(params[:id])
+    @wedding = WeddingRequest.find(params[:id])
+    if @wedding.user_id == current_user.id
+      @wedding = WeddingRequest.destroy(params[:id])
+      if @wedding.success?
+        redirect_to user_weddings_path(current_user.id), notice: "Successfully deleted wedding"
+      else
+        redirect_to wedding_path(@wedding.id), notice: "Couldn't delete this wedding."
+      end
+    else
+      redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
+    end
   end
-
 end

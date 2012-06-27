@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
       if @item.success?
         redirect_to wedding_path(@wedding.id), notice: "Successfully updated item!"
       else
-        redirect_to wedding_path(@wedding.id), notice: "Couldn't delete this wedding."
+        redirect_to wedding_path(@wedding.id), notice: "Couldn't delete this wedding item."
       end
     else
       @items = ItemRequest.find_all_by_wedding(@wedding.id)
