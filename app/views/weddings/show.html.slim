@@ -6,4 +6,11 @@
           h2 = item.name
           p = item.description
           p.time = Time.parse(item.created_at).strftime("%m/%d/%Y %I:%M %p")
-
+      - if @wedding.user_id == current_user.id
+        = form_tag user_wedding_items_path(current_user.id, @wedding.id) do
+          = label_tag("[item]name", "Title")
+          = text_field_tag("[item]name")
+          = label_tag("[item]description", "Description")
+          = text_field_tag("[item]description")
+          = hidden_field_tag("[item]category_id", 1)
+          = submit_tag

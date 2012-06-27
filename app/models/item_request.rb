@@ -8,4 +8,8 @@ class ItemRequest
       Item.new(item)
     end
   end
+
+   def self.create(attributes)
+    post("/items/", query: {item: attributes})
+  end
 end

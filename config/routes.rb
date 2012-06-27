@@ -6,7 +6,9 @@ WeddingFrontend::Application.routes.draw do
 
   resources :sessions
   resources :users do
-    resources :weddings
+    resources :weddings do
+      resources :items
+    end
   end
 
   resources :weddings
