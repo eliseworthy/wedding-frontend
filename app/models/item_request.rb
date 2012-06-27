@@ -22,7 +22,12 @@ class ItemRequest
     post("/items/", query: {item: attributes})
   end
 
-  def self.update(item_id, attributes)
-  	put("/items/#{item_id}", body: {item: attributes})
+  def self.update(id, attributes)
+  	put("/items/#{id}", body: {item: attributes})
   end
+
+  def self.destroy(id)
+    delete("/items/#{id}")
+  end
+
 end

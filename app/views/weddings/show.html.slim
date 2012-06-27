@@ -8,6 +8,7 @@
           p.time = Time.parse(item.created_at).strftime("%m/%d/%Y %I:%M %p")
           - if @wedding.user_id == current_user.id
             = link_to "edit", edit_item_path(item.id)
+            = link_to "delete", item_path(item.id), confirm: "Are you sure?", method: :delete
       - if @wedding.user_id == current_user.id
         = form_tag items_path do
           = label_tag("[item]name", "Title")

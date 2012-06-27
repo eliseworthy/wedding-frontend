@@ -35,4 +35,20 @@ class ItemsController < ApplicationController
       render "/weddings/show", notice: "Unauthorized to create items for this wedding"
     end
   end
+
+  def destroy
+    @item = ItemRequest.find(params[:id])
+    @wedding = WeddingRequest.find(@item.wedding_id)
+    if @wedding.user_id == current_user.id
+      @item = ItemRequest.destroy(params[:id])
+      if @item.success?
+        redirect_to wedding_path(@wedding.id), notice: "Successfully updated item!"
+      else
+        redirect_to wedding_path(@wedding.id), notice: "Couldn't delete this wedding."
+      end
+    else
+      @items = ItemRequest.find_all_by_wedding(@wedding.id)
+      render "/weddings/show", notice: "Unauthorized to delete items for this wedding"
+    end
+  end
 end
