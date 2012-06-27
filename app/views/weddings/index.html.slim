@@ -1,7 +1,12 @@
-#weddings.bar-list.ninecol 
-  - @weddings.each do |wedding|
-    = render "wedding", { wedding: wedding }
-  = will_paginate @weddings       
-  
+.twelvecol
+  h1 Recent Searches:
+  = PinRequest.search.first(3).each do |pin|
+    = image_tag pin.url
+.row
+  #weddings.bar-list.ninecol
+    - @weddings.each do |wedding|
+	  = render "wedding", { wedding: wedding }
+	  = will_paginate @weddings
+
 
 
