@@ -10,9 +10,6 @@ html
     .navigation
       h1 = link_to "Bridezilla", root_path
       span#nav-links
-        = form_tag(pins_path, method: "get") do
-           = text_field_tag(:search)
-           = submit_tag "Search"
         - if current_user
           = link_to current_user.email, user_weddings_path(current_user.id)
           |
@@ -27,3 +24,7 @@ html
       .row
         = yield
         .side-nav.threecol.last
+          = link_to "Search for Honeymoons!", honeymoons_path
+          = form_tag(pins_path, method: "get") do
+            = text_field_tag(:search)
+            = submit_tag "Search for Wedding Ideas"

@@ -1,20 +1,18 @@
-.container
-  .row
-    .bar-list.ninecol
-      - @items.each do |item|
-        .bar
-          h2 = item.name
-          p = item.description
-          p.time = Time.parse(item.created_at).strftime("%m/%d/%Y %I:%M %p")
-          - if @wedding.user_id == current_user.id
-            = link_to "edit", edit_item_path(item.id)
-            = link_to "delete", item_path(item.id), confirm: "Are you sure?", method: :delete
+.bar-list.ninecol
+  - @items.each do |item|
+    .bar
+      h2 = item.name
+      p = item.description
+      p.time = Time.parse(item.created_at).strftime("%m/%d/%Y %I:%M %p")
       - if @wedding.user_id == current_user.id
-        = form_tag items_path do
-          = label_tag("[item]name", "Title")
-          = text_field_tag("[item]name")
-          = label_tag("[item]description", "Description")
-          = text_field_tag("[item]description")
-          = hidden_field_tag("[item]category_id", 1)
-          = hidden_field_tag("[item]wedding_id", @wedding.id)
-          = submit_tag
+        = link_to "edit", edit_item_path(item.id)
+        = link_to "delete", item_path(item.id), confirm: "Are you sure?", method: :delete
+  - if @wedding.user_id == current_user.id
+    = form_tag items_path do
+      = label_tag("[item]name", "Title")
+      = text_field_tag("[item]name")
+      = label_tag("[item]description", "Description")
+      = text_field_tag("[item]description")
+      = hidden_field_tag("[item]category_id", 1)
+      = hidden_field_tag("[item]wedding_id", @wedding.id)
+      = submit_tag
