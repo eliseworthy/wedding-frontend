@@ -1,26 +1,26 @@
 html
   head
     title Dream it, Plan it: Bridezilla
-    = stylesheet_link_tag    "application", :media => "all" 
-    = javascript_include_tag "application" 
-    = stylesheet_link_tag href='http://fonts.googleapis.com/css?family=Berkshire+Swash' 
-    = csrf_meta_tags 
-  
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = stylesheet_link_tag href='http://fonts.googleapis.com/css?family=Berkshire+Swash'
+    = csrf_meta_tags
+
   body
     .navigation
       h1 = link_to "Bridezilla", root_path
       span#nav-links
-        - if current_user 
-          = link_to current_user.email, "#" 
-          |        
+        - if current_user
+          = link_to current_user.email, user_weddings_path(current_user.id)
+          |
           = link_to "Add +", new_wedding_path
-          |     
-          = link_to "Log Out", logout_path 
-        - else 
-          = link_to "Sign Up", signup_path 
-          |  
+          |
+          = link_to "Log Out", logout_path
+        - else
+          = link_to "Sign Up", signup_path
+          |
           = link_to "Log In", login_path
     .container
       .row
-        = yield 
-        .side-nav.threecol.last  
+        = yield
+        .side-nav.threecol.last

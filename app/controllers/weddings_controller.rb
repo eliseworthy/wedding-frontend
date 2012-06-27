@@ -3,7 +3,14 @@ class WeddingsController < ApplicationController
   before_filter :authorize, only: [:edit, :update, :create, :show, :destroy]
 
   def index
-    @weddings = WeddingRequest.find_all.paginate(page: params[:page], per_page: 5)
+    weddings = if params[:user_id]
+      WeddingRequest.find_all(user_id: params[:user_id])
+    else
+      WeddingRequest.find_all
+    end
+
+    @weddings = weddings.paginate(page: params[:page], per_page: 5)
+
     unless @weddings.respond_to?(:each)
       redirect_to root_path, flash[:error] = @wedding
     end
@@ -24,7 +31,6 @@ class WeddingsController < ApplicationController
     if @wedding.success?
       redirect_to root_path, notice: "Successfully created wedding!"
     else
-      raise @wedding.inspect
       render :new
     end
   end

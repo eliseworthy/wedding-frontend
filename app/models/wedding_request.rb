@@ -4,8 +4,8 @@ class WeddingRequest
 
   attr_accessor :flash_notice
 
-  def self.find_all
-    response = get('/weddings')
+  def self.find_all(args={})
+    response = get('/weddings', query: {query: args})
     if response.code == 200
       response["weddings"].map do |wedding|
         Wedding.new(wedding)
@@ -25,12 +25,12 @@ class WeddingRequest
   end
 
   def self.update(id, attributes)
-    response = put("/weddings/#{id}", query: attributes)
+    response = put("/weddings/#{id}", query: {wedding: attributes})
     response.success?
   end
 
   def self.create(attributes)
-    post("/weddings/", query: attributes)
+    post("/weddings/", query: {wedding: attributes})
   end
 
   def self.destroy(id)
