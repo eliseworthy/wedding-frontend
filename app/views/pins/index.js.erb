@@ -1,0 +1,10 @@
+<% @pins.each do |pin| %>
+  $('#pins').append('<%= j render("pin", {pin: pin}) %>');
+  <% if @pins.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate(@pins) %>');
+  <% else %>
+    $('.pagination').remove();
+  <% end %>
+<% end %>
+
+

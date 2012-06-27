@@ -1,0 +1,3 @@
+class Pin < OpenStruct
+
+end

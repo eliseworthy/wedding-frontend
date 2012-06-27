@@ -1,0 +1,4 @@
+#pins.bar-list.ninecol
+  - @pins.each do |pin|
+    = render "pin", { pin: pin }
+  = will_paginate @pins
