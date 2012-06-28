@@ -14,9 +14,10 @@ WeddingFrontend::Application.routes.draw do
   resources :items
   resources :pins
   resources :honeymoons
+  resources :pages
 
   resources :weddings
-  root to: 'weddings#index'
+  root to: 'pages#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -2,6 +2,6 @@
   = link_to wedding.name, wedding_path(wedding.id)
   p = wedding.description
   p.time = Time.parse(wedding.created_at).strftime("%m/%d/%Y %I:%M %p")
-  - if wedding.user_id == current_user.id
+  - if current_user && wedding.user_id == current_user.id
     = link_to "edit", edit_wedding_path(wedding.id)
     = link_to "delete", wedding_path(wedding.id), confirm: "Are you sure?", method: :delete

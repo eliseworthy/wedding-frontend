@@ -26,12 +26,15 @@ class WeddingsController < ApplicationController
   end
 
   def create
-    params[:wedding][:user_id] = current_user.id
-    @wedding = WeddingRequest.create(params[:wedding])
-    if @wedding.success?
-      redirect_to user_weddings_path(current_user.id), notice: "Successfully created wedding!"
-    else
-      render :new
+    if current_user
+      params[:wedding][:user_id] = current_user.id
+      @wedding = WeddingRequest.create(params[:wedding])
+      if @wedding.success?
+        redirect_to user_weddings_path(current_user.id), notice: "Successfully created wedding!"
+      else
+        render :new
+      end
+    else redirect_to root_path
     end
   end
 
@@ -40,29 +43,35 @@ class WeddingsController < ApplicationController
   end
 
   def update
-    if params[:wedding][:user_id].to_i == current_user.id
-      @wedding = WeddingRequest.update(params[:id], params[:wedding])
-      if @wedding.success?
-        redirect_to user_weddings_path(current_user.id), notice: "Successfully updated wedding!"
+    if current_user
+      if params[:wedding][:user_id].to_i == current_user.id
+        @wedding = WeddingRequest.update(params[:id], params[:wedding])
+        if @wedding.success?
+          redirect_to user_weddings_path(current_user.id), notice: "Successfully updated wedding!"
+        else
+          redirect_to user_weddings_path(current_user.id), notice: "Couldn't update this wedding"
+        end
       else
-        redirect_to user_weddings_path(current_user.id), notice: "Couldn't update this wedding"
+        redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
       end
-    else
-      redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
+    else redirect_to root_path
     end
   end
 
   def destroy
-    @wedding = WeddingRequest.find(params[:id])
-    if @wedding.user_id == current_user.id
-      @wedding = WeddingRequest.destroy(params[:id])
-      if @wedding.success?
-        redirect_to user_weddings_path(current_user.id), notice: "Successfully deleted wedding"
+    if current_user
+      @wedding = WeddingRequest.find(params[:id])
+      if @wedding.user_id == current_user.id
+        @wedding = WeddingRequest.destroy(params[:id])
+        if @wedding.success?
+          redirect_to user_weddings_path(current_user.id), notice: "Successfully deleted wedding"
+        else
+          redirect_to wedding_path(@wedding.id), notice: "Couldn't delete this wedding."
+        end
       else
-        redirect_to wedding_path(@wedding.id), notice: "Couldn't delete this wedding."
+        redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
       end
-    else
-      redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
+    else redirect_to root_path
     end
   end
 end

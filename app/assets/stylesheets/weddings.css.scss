@@ -1,9 +1,22 @@
+$aqua: #3FB8AF;
+$mud: #DAD8A7;
+$light-aqua: #7FC7AF;
+$baby-pink: #FF9E9D;
+$bright-pink: #FF3D7F;
+$main-border: $aqua;
+$h1: $bright-pink;
+
 body {
   background-color: #FAF8F5;
   background-image: -webkit-linear-gradient(0, transparent 50%, rgba(255,255,255,.5) 50%);
   background-size: 50px;
   font-family: helvetica, arial, sans-serif;
 }
+
+a {
+    text-decoration: none;
+    color: darkgray;
+  }
 
 .navigation {
   padding-bottom: 20px;
@@ -17,7 +30,7 @@ body {
     margin-left: 20px;
     margin-top: 10px;
     color: #B8C45A;
-    font-size: 35px; 
+    font-size: 35px;
     font-family: 'Berkshire Swash', cursive;
     position: absolute;
     left: 50%;
@@ -37,20 +50,62 @@ body {
 }
 
 .side-nav {
-  min-height: 200px;
   border: 1px solid #B8C45A;
   background: #FBF8F5;
   -webkit-box-shadow: 0 4px 2px -2px lightgray;
+}
+
+//Root Path
+
+#callout {
+  background: url("/assets/resized.png");
+  min-height: 300px;
+  background-color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid $main-border;
+  h1 {
+    text-align: right;
+    padding-top: 5%;
+    padding-right: 6%;
+    font-size: 3em;
+  }
+  #sign-up {
+    margin-right: 20%;
+    float: right;
+    position: relative;
+    #browse {
+      a {
+        color: gray;
+        text-decoration: none;
+      }
+      a:hover {
+        color: $baby-pink;
+      }
+      position: absolute; bottom: 5; right: -120;
+    }
+  }
+}
+h1#tag {
+  color: $h1;
+  font-family: 'Berkshire Swash', cursive;
+  padding-bottom: 10px;
+}
+
+#wedding-ideas {
+  margin-top: 10px;
+  #search {
+    margin-top: 20px;
+  }
 }
 
 //Public wedding index
 
 .bar {
   padding-left: 10px;
-  border-top: 1px solid #E880A2;
-  border-bottom: 1px solid #E880A2;
-  border-right: 1px solid #E880A2;
-    -webkit-box-shadow: 0 4px 2px -2px lightgray;
+  border: 1px solid $bright-pink;
+  -webkit-box-shadow: 0 4px 2px -2px lightgray;
   margin-bottom: 30px;
   min-height: 150px;
   background: url("http://www.simplyjessie.com/wp-content/uploads/2011/06/Outdoor-Garden-Wedding-in-Chicago-150x150.jpg") no-repeat left #FBF8F5;
