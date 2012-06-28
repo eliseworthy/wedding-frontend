@@ -3,11 +3,12 @@
   p = honeymoon.location
   = link_to honeymoon.description, honeymoon.url
   p.time = Time.parse(honeymoon.created_at).strftime("%m/%d/%Y %I:%M %p")
-  = form_tag items_path do
-	  = hidden_field_tag("[item]name", honeymoon.url)
-	  = hidden_field_tag("[item]description", honeymoon.description)
-	  = hidden_field_tag("[item]category_id", 1)
-	  = label_tag "Add to Wedding:"
-	  = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
-	  = submit_tag "Add!"
+  - if current_user
+    = form_tag items_path do
+  	  = hidden_field_tag("[item]name", honeymoon.url)
+  	  = hidden_field_tag("[item]description", honeymoon.description)
+  	  = hidden_field_tag("[item]category_id", 1)
+  	  = label_tag "Add to Wedding:"
+  	  = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
+  	  = submit_tag "Add!"
 

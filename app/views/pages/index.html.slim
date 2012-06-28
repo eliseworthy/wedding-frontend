@@ -17,8 +17,8 @@
     #search
       h1#tag Collect Ideas
       .side-nav.threecol.last
-        = button_to "Search for Honeymoons!", honeymoons_path, class: "little-button", method: "get"
+        = button_to "Search for Honeymoons", honeymoons_path, class: "little-button", method: "get"
         = form_tag(pins_path, method: "get") do
           = text_field_tag(:search)
-          = button_tag "Search for Wedding Ideas", class: "little-button"
+          = button_tag "Search for Ideas", class: "little-button"
 

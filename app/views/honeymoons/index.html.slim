@@ -1,4 +1,5 @@
 #honeymoons.bar-list.ninecol
+  h1 Honeymoon Ideas
   - @honeymoons.each do |honeymoon|
     = render "honeymoon", { honeymoon: honeymoon }
   = will_paginate @honeymoons
