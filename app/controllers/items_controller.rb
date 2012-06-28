@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
         render "/weddings/show", notice: "Unauthorized to create items for this wedding"
       end
     else redirect_to root_path
+    end
   end
 
   def edit
@@ -38,6 +39,7 @@ class ItemsController < ApplicationController
         render "/weddings/show", notice: "Unauthorized to create items for this wedding"
       end
     else redirect_to root_path
+    end
   end
 
   def destroy
@@ -56,5 +58,6 @@ class ItemsController < ApplicationController
         render "/weddings/show", notice: "Unauthorized to delete items for this wedding"
       end
     else redirect_to root_path
+    end
   end
 end
