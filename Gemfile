@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'will_paginate'
 gem 'resque'
 gem 'resque_mailer'
+gem 'simplecov', :require => false
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
