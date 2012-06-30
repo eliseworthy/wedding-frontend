@@ -12,7 +12,7 @@ class WeddingsController < ApplicationController
     @weddings = weddings.paginate(page: params[:page], per_page: 5)
 
     unless @weddings.respond_to?(:each)
-      redirect_to root_path, flash[:error] = @wedding
+      redirect_to root_path, flash[:error] = @wedding # Where is @wedding being assigned?
     end
   end
 
@@ -34,7 +34,7 @@ class WeddingsController < ApplicationController
       else
         render :new
       end
-    else redirect_to root_path
+    else redirect_to root_path #
     end
   end
 
@@ -54,7 +54,7 @@ class WeddingsController < ApplicationController
       else
         redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
       end
-    else redirect_to root_path
+    else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
   end
 
@@ -71,7 +71,7 @@ class WeddingsController < ApplicationController
       else
         redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
       end
-    else redirect_to root_path
+    else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
   end
 end

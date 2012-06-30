@@ -1,12 +1,13 @@
-.twelvecol
-  h1 Recent Searches:
-  = PinRequest.search.first(3).each do |pin|
-    = image_tag pin.url
-.row
-  #weddings.bar-list.ninecol
-    - @weddings.each do |wedding|
-	  = render "wedding", { wedding: wedding }
-	  = will_paginate @weddings
+#weddings.bar-list.ninecol
+  - if current_user.id.to_i == params[:user_id].to_i
+    h1 = "My Wedding Plans"
+    br
+    = link_to "Add Wedding Plan", new_wedding_path
+  - else
+    h1 = "#{current_user.name}'s Wedding Plans"
+  - @weddings.each do |wedding|
+    = render "wedding", { wedding: wedding }
+  = will_paginate @weddings
 
 
 

@@ -1,5 +1,15 @@
 class ItemsController < ApplicationController
+
   def create
+    # TODO Refactor to:
+
+    # @response = ItemRequest.create(params[:item])
+    # if @response.success?
+    #   redirect_to wedding_path(@wedding.id), notice: "Successfully created item!"
+    # else
+    #   render "/weddings/show", notice: @response[:error]
+    # end
+
     if current_user
       @wedding = WeddingRequest.find(params[:item][:wedding_id])
       if @wedding.user_id == current_user.id
@@ -15,7 +25,7 @@ class ItemsController < ApplicationController
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
         render "/weddings/show", notice: "Unauthorized to create items for this wedding"
       end
-    else redirect_to root_path
+    else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
   end
 
@@ -38,7 +48,7 @@ class ItemsController < ApplicationController
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
         render "/weddings/show", notice: "Unauthorized to create items for this wedding"
       end
-    else redirect_to root_path
+    else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
   end
 
@@ -57,7 +67,7 @@ class ItemsController < ApplicationController
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
         render "/weddings/show", notice: "Unauthorized to delete items for this wedding"
       end
-    else redirect_to root_path
+    else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
   end
 end

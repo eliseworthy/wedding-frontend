@@ -1,24 +1,16 @@
-.row
-  .twelvecol.last
-    #callout
-      #callout-text
-        h1#tag Bridle your Wedding Plans!
-        p Find and store all your wedding ideas to share with others.
-      #sign-up
-        = button_to "Sign Up >", new_user_path, class: "callout-button", method: "get"
-        #browse
-          = link_to "or Browse Ideas", pins_path
-.row
+.ninecol
+  #callout
+    #callout-text
+      h1#tag Bridle your Wedding Plans!
+      p Find and store all your wedding ideas to share with others.
+    #sign-up
+      = button_to "Sign Up >", new_user_path, class: "callout-button", method: "get"
+      #browse
+        = link_to "or Browse Ideas", pins_path
+
   #wedding-ideas
-    .bar-list.ninecol
+    .bar-list
       h1#tag Recent Weddings
       - @weddings.each do |wedding|
         = render "weddings/wedding", { wedding: wedding }
-    #search
-      h1#tag Collect Ideas
-      .side-nav.threecol.last
-        = button_to "Search for Honeymoons", honeymoons_path, class: "little-button", method: "get"
-        = form_tag(pins_path, method: "get") do
-          = text_field_tag(:search)
-          = button_tag "Search for Ideas", class: "little-button"
 

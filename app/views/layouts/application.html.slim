@@ -21,4 +21,33 @@ html
           |
           = link_to "Log In", login_path
     .container
+      .row
         = yield
+        - if current_user
+          h1#tag My Account
+          .side-nav.threecol.last
+            = link_to "My Wedding Ideas", user_weddings_path(current_user.id)
+        - else
+          h1#tag Register Now!
+          .side-nav.threecol.last
+            = button_to "Search for Honeymoons", honeymoons_path, class: "little-button", method: "get"
+            = form_tag(pins_path, method: "get") do
+              = text_field_tag(:search)
+              = button_tag "Search for Ideas", class: "little-button"
+        h1#tag Collect Ideas
+        .side-nav.threecol.last
+          = button_to "Search for Honeymoons", honeymoons_path, class: "little-button", method: "get"
+          = form_tag(pins_path, method: "get") do
+            = text_field_tag(:search)
+            = button_tag "Search for Ideas", class: "little-button"
+    .footer
+      .container
+        .row
+          h1 Recent Wedding Plans
+          .wedding-example.fourcol
+            h1 Wedding A
+          .wedding-example.fourcol
+            h1 Wedding B
+          .wedding-example.fourcol.last
+            h1 Wedding C
+
