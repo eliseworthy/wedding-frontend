@@ -53,12 +53,12 @@ html
         .row
           h2 Recent Wedding Plans
           .wedding-example.fourcol
-            h4 = link_to @recent_weddings.first.name
+            h4 = link_to @recent_weddings.first.name, user_wedding_path(@recent_weddings.first.user_id, @recent_weddings.first.id)
             = image_tag @recent_weddings.first.photo_url, width: "200px"
           .wedding-example.fourcol
-            h4 = link_to @recent_weddings[1].name
+            h4 = link_to @recent_weddings[1].name, user_wedding_path(@recent_weddings[1].user_id, @recent_weddings[1].id)
             = image_tag @recent_weddings[1].photo_url, width: "200px"
           .wedding-example.fourcol.last
-            h4 = link_to @recent_weddings[2].name
+            h4 = link_to @recent_weddings[2].name, user_wedding_path(@recent_weddings[2].user_id, @recent_weddings[2].id)
             = image_tag @recent_weddings[2].photo_url, width: "200px"
 
