@@ -8,9 +8,4 @@
       #browse
         = link_to "or Browse Ideas", pins_path
 
-  #wedding-ideas
-    .bar-list
-      h1#tag Recent Weddings
-      - @weddings.each do |wedding|
-        = render "weddings/wedding", { wedding: wedding }
 

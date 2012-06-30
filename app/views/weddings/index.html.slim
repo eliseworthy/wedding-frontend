@@ -1,10 +1,11 @@
 #weddings.bar-list.ninecol
-  - if current_user.id.to_i == params[:user_id].to_i
-    h1 = "My Wedding Plans"
+  - if current_user && current_user.id.to_i == params[:user_id].to_i
+    h2#tag = "My Wedding Plans"
     br
-    = link_to "Add Wedding Plan", new_wedding_path
+    = link_to new_wedding_path do
+      #plus Add Wedding Plan
   - else
-    h1 = "#{current_user.name}'s Wedding Plans"
+    h2#tag = "#{current_user.name}'s Wedding Plans"
   - @weddings.each do |wedding|
     = render "wedding", { wedding: wedding }
   = will_paginate @weddings

@@ -1,4 +1,8 @@
 .bar-list.ninecol
+  /if current user
+  /= link_to "edit", edit_user_wedding_path(current_user.id, wedding.id)
+  /= link_to "delete", user_wedding_path(current_user.id, wedding.id), confirm: "Are you sure?", method: :delete
+
   - @items.each do |item|
     .bar
       h2 = item.name

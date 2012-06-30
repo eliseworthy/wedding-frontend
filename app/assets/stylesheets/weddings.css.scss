@@ -15,27 +15,16 @@ body {
 
 a {
     text-decoration: none;
-    color: darkgray;
   }
 
 .navigation {
+  text-align: center;
   padding-bottom: 20px;
   margin-bottom: 30px;
-  height: 45px;
+  height: 80px;
   background-color: #FBF8F5;
   border-bottom: 1px solid #B8C45A;
   -webkit-box-shadow: 0 4px 2px -2px lightgray;
-  h1 a {
-    text-decoration: none;
-    margin-left: 20px;
-    margin-top: 10px;
-    color: #B8C45A;
-    font-size: 35px;
-    font-family: 'Berkshire Swash', cursive;
-    position: absolute;
-    left: 50%;
-    margin-left: -120px;
-   }
 }
 
 #nav-links {
@@ -49,10 +38,13 @@ a {
   }
 }
 
-.side-nav {
-  border: 1px solid #B8C45A;
-  background: #FBF8F5;
-  -webkit-box-shadow: 0 4px 2px -2px lightgray;
+#nav-item {
+  border: 1px solid $bright-pink;
+  background: white;
+  margin: 10px;
+  margin-left: 10px;
+  padding-left: 5px;
+  -webkit-box-shadow: 0 5px 2px -2px lightgray;
 }
 
 //Root Path
@@ -95,9 +87,52 @@ a {
     }
   }
 }
-h1#tag {
-  color: $h1;
-  font-family: 'Berkshire Swash', cursive;
+
+h1, h1 a {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 70px;
+  line-height: 100px;
+  color: $aqua;
+}
+
+h2, h2 a {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 50px;
+  line-height: 70px;
+  color: $aqua;
+}
+
+h3, h3 a {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 30px;
+  line-height: 45px;
+  color: $aqua;
+}
+
+h4, h4 a {
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  color: #9F937D;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+p, a, label {
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+  color: darkgray;
+}
+
+textarea {
+  border:none;
+}
+
+#plus {
+  background: url("https://s3.amazonaws.com/bride-items/add.png") no-repeat;
+  line-height: 1.6;
+  padding-left: 37px;
+  font-size: 1.4em;
+  margin-bottom: 10px;
 }
 
 #wedding-ideas {
@@ -109,26 +144,25 @@ h1#tag {
 
 //Public wedding index
 
-.bar {
+.wedding-bar {
   padding-left: 10px;
   border: 1px solid $bright-pink;
-  -webkit-box-shadow: 0 4px 2px -2px lightgray;
+  -webkit-box-shadow: 0 10px 2px -2px lightgray;
   margin-bottom: 30px;
   min-height: 150px;
-  background: url("http://www.simplyjessie.com/wp-content/uploads/2011/06/Outdoor-Garden-Wedding-in-Chicago-150x150.jpg") no-repeat left #FBF8F5;
+  background: white;
   position: relative;
+  padding: 0px;
+  background-color: white;
+  img {
+    vertical-align: middle;
+  }
   a {
-    font-size: 1.5em;
+    padding-left: 10px;
+    font-size: 2.5em;
     font-weight: bold;
-    margin-top: 10px;
-    margin-left: 160px;
     color: #9F937D;
     text-decoration: none;
-  }
-  p {
-    margin-top: 10px;
-    margin-left: 170px;
-    color: gray;
   }
 }
 
@@ -154,10 +188,15 @@ h1#tag {
 
 .footer {
   background-color: $aqua;
+  h2 {
+    margin-top: 20px;
+    color: $bright-pink;
+  }
   .wedding-example {
-    margin-top: 40px;
+    text-align: center;
+    margin-top: 10px;
     margin-bottom: 40px;
-    min-height: 400px;
+    min-height: 250px;
     border: 1px solid $bright-pink;
     background-color: white;
   }
