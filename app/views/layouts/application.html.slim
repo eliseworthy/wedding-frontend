@@ -32,6 +32,8 @@ html
                   = submit_tag "Find"
               #nav-item
                 = link_to "Browse Weddings", weddings_path
+              #nav-item
+                = link_to "Browse Picture Searches", weddings_path
 
           - else
             h2#tag Register Now!
@@ -55,7 +57,7 @@ html
       .footer
         .container
           .row
-            h3 Recently Added
+            h3 Recently Added Wedding Plans
             - @recent_weddings.each do |wedding|
               - if @recent_weddings[-1] == wedding
                 = render "weddings/last_wedding_example", wedding: wedding

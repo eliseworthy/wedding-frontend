@@ -1,5 +1,8 @@
 .ninecol
-  h1 = @pins.first.description.capitalize
+  - if params[:search]
+    h1 = @pins.first.description.capitalize
+  - else
+    h1 Recent picture searches
   .search-box-list
     - @pins.each do |pin|
       = render "pin", pin: pin

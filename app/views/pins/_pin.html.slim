@@ -3,7 +3,7 @@
     = image_tag pin.url, class: "pin"
   - if current_user
     = link_to(image_tag('https://s3.amazonaws.com/bride-items/add-favorite.png', class: "heart"), "#")
-    = form_tag items_path, class: search do
+    = form_tag items_path, class: "search" do
   	  = hidden_field_tag("[item]photo_url", pin.url)
   	  = hidden_field_tag("[item]description", pin.description)
     	= label_tag "Add to Wedding:"
