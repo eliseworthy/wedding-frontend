@@ -3,4 +3,5 @@
   .search-box-list
     - @items.each do |item|
       = render "item", { item: item }
-    = render "add_item_bar"
+    - if @wedding.user_id == current_user.id
+      = render "add_item_bar"
