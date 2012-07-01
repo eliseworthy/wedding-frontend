@@ -1,4 +1,7 @@
 .twocol
   .wedding-example
     = image_tag wedding.photo_url
-    p = link_to wedding.name, user_wedding_path(wedding.user_id, wedding.id)
+    - if current_user
+      p = link_to wedding.name, user_wedding_path(wedding.user_id, wedding.id)
+    - else
+      p = wedding.name
