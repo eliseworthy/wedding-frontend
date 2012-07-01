@@ -34,6 +34,25 @@ jQuery ->
     $(this).parent().next('.wedding-details').slideToggle ->
     false
 
+  $('#sign-up').children().click ->
+    $('#login-form').hide()
+    $('#form').slideToggle ->
+    false
+
+  $('#reg-link').children('a').click ->
+    $('#login-form').hide()
+    $('#form').slideToggle ->
+    false
+
+  $('#login').click ->
+    $('#login-form').show()
+    $('#form').hide()
+
+  $('#register').click ->
+    $('#login-form').hide()
+    $('#form').show()
+
+
 $(window).load ->
   $('.search-box-list').masonry
 

@@ -38,7 +38,19 @@ a {
   }
 }
 
-#nav-item {
+#reg-link {
+  margin-left: 5px;
+}
+
+#form {
+  display: none;
+}
+
+#login-form {
+  display: none;
+}
+
+.nav-item {
   border: 1px solid $baby-pink;
   background: white;
   margin: 10px;

@@ -18,42 +18,60 @@ html
             h2#tag My Account
             .side-nav.threecol.last
               h4 = "Logged in as #{current_user.name}"
-              #nav-item
+              .nav-item
                 = link_to "My Wedding Plans", user_weddings_path(current_user.id)
-              #nav-item
+              .nav-item
                 = link_to "Log Out", logout_path
               h3#tag Collect Ideas
-              #nav-item
+              .nav-item
                 = link_to "Destination Search", honeymoons_path
-              #nav-item
+              .nav-item
                 p Picture Search
                 = form_tag(pins_path, method: "get") do
                   = text_field_tag(:search)
                   = submit_tag "Find"
-              #nav-item
+              .nav-item
                 = link_to "Browse Weddings", weddings_path
-              #nav-item
+              .nav-item
                 = link_to "Browse Picture Searches", pins_path
 
           - else
-            h2#tag Register Now!
             .side-nav.threecol.last
-              #nav-item
-                = form_for User.new do |f|
-                  = f.label :name
-                  = f.text_field :name
-                  br
-                  = f.label :email
-                  = f.text_field :email
-                  br
-                  = f.label :password
-                  = f.password_field :password
-                  br
-                  = f.label :password
-                  = f.password_field :password_confirmation
-                  br
-                  = f.submit "Register"
-                  = link_to "Log In", login_path
+              .nav-item
+                h2#reg-link = link_to "Register Now!", "#"
+                #form
+                  = form_for User.new do |f|
+                    = f.label :name
+                    br
+                    = f.text_field :name
+                    br
+                    = f.label :email
+                    br
+                    = f.text_field :email
+                    br
+                    = f.label :password
+                    br
+                    = f.password_field :password
+                    br
+                    = f.label :password_confirmation
+                    br
+                    = f.password_field :password_confirmation
+                    br
+                    = f.submit "Register"
+                    = link_to "or log in", '#', id: "login"
+                #login-form
+                  = form_tag sessions_path do
+                    = label_tag :email
+                    br
+                    = text_field_tag :email, params[:email]
+                    br
+                    = label_tag :password
+                    br
+                    = password_field_tag :password
+                    br
+                    = submit_tag "Log In"
+                    = link_to "or register", '#', id: "register"
+
       .footer
         .container
           .row
