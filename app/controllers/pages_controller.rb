@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def index
-    @weddings = WeddingRequest.find_all.reverse
-    @weddings = @weddings.first(3)
+    if current_user
+      redirect_to user_weddings_path(current_user.id)
+    else
+      @weddings = WeddingRequest.find_all.reverse
+      @weddings = @weddings.first(3)
+    end
   end
 end
