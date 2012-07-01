@@ -1,12 +1,11 @@
-.item-bar
+.pin-box
   .image
     = image_tag pin.url, class: "pin"
   - if current_user
+    = link_to(image_tag('https://s3.amazonaws.com/bride-items/add-favorite.png', class: "heart"), "#")
     = form_tag items_path do
-  	  = hidden_field_tag("[item]name", pin.url)
+  	  = hidden_field_tag("[item]photo_url", pin.url)
   	  = hidden_field_tag("[item]description", pin.description)
-  	  = hidden_field_tag("[item]category_id", 1)
     	= label_tag "Add to Wedding:"
   	  = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
-  	  = submit_tag "Add!"
 
