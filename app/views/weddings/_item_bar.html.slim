@@ -1,8 +1,0 @@
-.item-bar
-  .image
-    = image_tag item.photo_url
-  p.description = item.description
-  p.time = time_ago_in_words(Time.parse(item.created_at)) + " ago"
-  / - if @wedding.user_id == current_user.id
-  /   = link_to "edit", edit_item_path(item.id)
-  /   = link_to "delete", item_path(item.id), confirm: "Are you sure?", method: :delete

@@ -1,7 +1,7 @@
-.item-bar
-  h3 Add a new idea
+.search-box
   - if @wedding.user_id == current_user.id
-    = form_tag items_path do
+    h3 Add a new idea
+    = form_tag items_path, class: "add-item-form" do
       = label_tag("[item]photo_url", "Picture URL")
       = text_field_tag("[item]photo_url")
       = label_tag("[item]description", "Description")

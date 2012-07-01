@@ -1,19 +1,6 @@
-.bar-list.ninecol
+.ninecol
   = render "descriptive_wedding", { wedding: @wedding }
-  - @items.in_groups_of(4) do |group|
-    .row
-      - group.uniq.each do |item|
-        - if item.nil? && item == group[-1]
-          .threecol.last
-            = render "add_item_bar"
-        - elsif item.nil?
-          .threecol
-            = render "add_item_bar"
-        - elsif group[-1] == item
-          .threecol.last
-            = render "item_bar", item: item
-        - else
-          .threecol
-            = render "item_bar", item: item
-
-
+  .search-box-list
+    - @items.each do |item|
+      = render "item", { item: item }
+    = render "add_item_bar"

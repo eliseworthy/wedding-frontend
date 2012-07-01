@@ -238,12 +238,17 @@ textarea {
     margin: 0 74;
     margin-top: 10px;
   }
-  form {
+  p.description {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  form.search {
     display: none;
     select {
      width: 175px;
     }
   }
+  -webkit-box-shadow: 0 3px 2px -2px lightgray;
 }
 
 .footer {

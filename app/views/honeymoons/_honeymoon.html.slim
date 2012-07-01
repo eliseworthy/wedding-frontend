@@ -4,8 +4,8 @@
     = link_to honeymoon.location, honeymoon.url
   - if current_user
     = link_to(image_tag('https://s3.amazonaws.com/bride-items/add-favorite.png', class: "heart"), "#")
-    = form_tag items_path do
+    = form_tag items_path, class: "search" do
   	  = hidden_field_tag("[item]photo_url", honeymoon.image_url)
-  	  = hidden_field_tag("[item]description", "#{honeymoon.location} #{honeymoon.url}")
+  	  = hidden_field_tag("[item]description", "#{honeymoon.location}")
   	  = label_tag "Add to Wedding:"
   	  = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
