@@ -173,6 +173,24 @@ textarea {
   }
 }
 
+.show-details {
+  text-align: left;
+  margin-right: 10px;
+  position: absolute; bottom: 0; left: 0;
+  font-style: italic;
+  color: #C3B5AC;
+  font-size: 12px;
+  a {
+    margin: 3px;
+    font-size: 12px;
+  }
+}
+
+.details {
+  margin-bottom: 10px;
+  display: none;
+}
+
 .time, .bottom-bar {
   text-align: right;
   margin-right: 10px;
@@ -182,6 +200,7 @@ textarea {
   font-size: 12px;
   a {
     margin: 3px;
+    font-size: 12px;
   }
   }
 

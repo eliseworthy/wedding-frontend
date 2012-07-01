@@ -25,6 +25,11 @@ jQuery ->
   $('.search-box form select').change ->
     $(this).parents('form').submit()
 
+  $('.show-details').children('a').click ->
+    $(this).parent().next('.details').slideToggle ->
+      $('.search-box-list').masonry()
+    false
+
 $(window).load ->
   $('.search-box-list').masonry
 

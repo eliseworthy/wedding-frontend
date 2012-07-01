@@ -2,7 +2,19 @@
   .image
     = image_tag item.photo_url
     p.description = item.description
-    p.time = time_ago_in_words(Time.parse(item.created_at)) + " ago"
-      / - if @wedding.user_id == current_user.id
-  /   = link_to "edit", edit_item_path(item.id)
-  /   = link_to "delete", item_path(item.id), confirm: "Are you sure?", method: :delete
+    p.bottom-bar
+      = time_ago_in_words(Time.parse(item.created_at)) + " ago"
+    p.show-details
+      - if @wedding.user_id == current_user.id
+        = link_to "details", "#"
+    .details
+      = form_tag item_path(item.id), method: :put do
+        = hidden_field_tag("[item]wedding_id", @wedding.id)
+        = hidden_field_tag("[item]photo_url", item.photo_url)
+        = label_tag("[item]description", "Description")
+        = text_field_tag("[item]description", item.description)
+        - if item.url
+          = label_tag("[item]url", "URL")
+          = text_field_tag("[item]url", item.url)
+        = submit_tag
+      = link_to "delete", item_path(item.id), confirm: "Are you sure?", method: :delete
