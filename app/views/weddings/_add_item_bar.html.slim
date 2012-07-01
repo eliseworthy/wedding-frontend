@@ -1,0 +1,10 @@
+.item-bar
+  h3 Add a new idea
+  - if @wedding.user_id == current_user.id
+    = form_tag items_path do
+      = label_tag("[item]photo_url", "Picture URL")
+      = text_field_tag("[item]photo_url")
+      = label_tag("[item]description", "Description")
+      = text_field_tag("[item]description")
+      = hidden_field_tag("[item]wedding_id", @wedding.id)
+      = submit_tag

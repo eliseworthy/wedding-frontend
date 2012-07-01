@@ -8,57 +8,59 @@ html
     = csrf_meta_tags
 
   body
-    .navigation
-      h1 = link_to "Bridled", root_path
-    .container
-      .row
-        = yield
-        - if current_user
-          h2#tag My Account
-          .side-nav.threecol.last
-            h4 = "Logged in as #{current_user.name}"
-            #nav-item
-              = link_to "My Wedding Plans", user_weddings_path(current_user.id)
-            #nav-item
-              = link_to "Log Out", logout_path
-            h3#tag Collect Ideas
-            #nav-item
-              = link_to "Destination Search", honeymoons_path
-            #nav-item
-              p Picture Search
-              = form_tag(pins_path, method: "get") do
-                = text_field_tag(:search)
-                = submit_tag "Find"
-        - else
-          h2#tag Register Now!
-          .side-nav.threecol.last
-            #nav-item
-              = form_for User.new do |f|
-                = f.label :name
-                = f.text_field :name
-                br
-                = f.label :email
-                = f.text_field :email
-                br
-                = f.label :password
-                = f.password_field :password
-                br
-                = f.label :password
-                = f.password_field :password_confirmation
-                br
-                = f.submit "Register"
-                = link_to "Log In", login_path
-    .footer
+    .wrapper
+      .navigation
+        h1 = link_to "Bridled", root_path
       .container
         .row
-          h2 Recent Wedding Plans
-          .wedding-example.fourcol
-            h4 = link_to @recent_weddings.first.name, user_wedding_path(@recent_weddings.first.user_id, @recent_weddings.first.id)
-            = image_tag @recent_weddings.first.photo_url, width: "200px"
-          .wedding-example.fourcol
-            h4 = link_to @recent_weddings[1].name, user_wedding_path(@recent_weddings[1].user_id, @recent_weddings[1].id)
-            = image_tag @recent_weddings[1].photo_url, width: "200px"
-          .wedding-example.fourcol.last
-            h4 = link_to @recent_weddings[2].name, user_wedding_path(@recent_weddings[2].user_id, @recent_weddings[2].id)
-            = image_tag @recent_weddings[2].photo_url, width: "200px"
+          = yield
+          - if current_user
+            h2#tag My Account
+            .side-nav.threecol.last
+              h4 = "Logged in as #{current_user.name}"
+              #nav-item
+                = link_to "My Wedding Plans", user_weddings_path(current_user.id)
+              #nav-item
+                = link_to "Log Out", logout_path
+              h3#tag Collect Ideas
+              #nav-item
+                = link_to "Destination Search", honeymoons_path
+              #nav-item
+                p Picture Search
+                = form_tag(pins_path, method: "get") do
+                  = text_field_tag(:search)
+                  = submit_tag "Find"
+          - else
+            h2#tag Register Now!
+            .side-nav.threecol.last
+              #nav-item
+                = form_for User.new do |f|
+                  = f.label :name
+                  = f.text_field :name
+                  br
+                  = f.label :email
+                  = f.text_field :email
+                  br
+                  = f.label :password
+                  = f.password_field :password
+                  br
+                  = f.label :password
+                  = f.password_field :password_confirmation
+                  br
+                  = f.submit "Register"
+                  = link_to "Log In", login_path
+      .push
+      .footer
+        .container
+          .row
+            h2 Recent Wedding Plans
+            .wedding-example.fourcol
+              h4 = link_to @recent_weddings.first.name, user_wedding_path(@recent_weddings.first.user_id, @recent_weddings.first.id)
+              = image_tag @recent_weddings.first.photo_url, width: "200px"
+            .wedding-example.fourcol
+              h4 = link_to @recent_weddings[1].name, user_wedding_path(@recent_weddings[1].user_id, @recent_weddings[1].id)
+              = image_tag @recent_weddings[1].photo_url, width: "200px"
+            .wedding-example.fourcol.last
+              h4 = link_to @recent_weddings[2].name, user_wedding_path(@recent_weddings[2].user_id, @recent_weddings[2].id)
+              = image_tag @recent_weddings[2].photo_url, width: "200px"
 

@@ -5,4 +5,4 @@
       - if current_user.id == @wedding.user_id
         = link_to "edit", edit_user_wedding_path(current_user.id, @wedding.id)
         = link_to "delete", user_wedding_path(current_user.id, @wedding.id), confirm: "Are you sure?", method: :delete
-      = Time.parse(wedding.created_at).strftime("%m/%d/%Y %I:%M %p")
+      = time_ago_in_words(Time.parse(wedding.created_at)) + " ago"
