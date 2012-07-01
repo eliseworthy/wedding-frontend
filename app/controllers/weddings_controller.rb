@@ -45,11 +45,11 @@ class WeddingsController < ApplicationController
   def update
     if current_user
       if params[:wedding][:user_id].to_i == current_user.id
-        @wedding = WeddingRequest.update(params[:id], params[:wedding])
-        if @wedding.success?
-          redirect_to user_weddings_path(current_user.id), notice: "Successfully updated wedding!"
+        response = WeddingRequest.update(params[:id], params[:wedding])
+        if response.success?
+          redirect_to wedding_path(response.parsed_response[:id]), notice: "Successfully updated wedding!"
         else
-          redirect_to user_weddings_path(current_user.id), notice: "Couldn't update this wedding"
+          redirect_to wedding_path(response.parsed_response[:id]), notice: "Couldn't update this wedding"
         end
       else
         redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
@@ -62,14 +62,14 @@ class WeddingsController < ApplicationController
     if current_user
       @wedding = WeddingRequest.find(params[:id])
       if @wedding.user_id == current_user.id
-        @wedding = WeddingRequest.destroy(params[:id])
-        if @wedding.success?
+        response = WeddingRequest.destroy(params[:id])
+        if response.success?
           redirect_to user_weddings_path(current_user.id), notice: "Successfully deleted wedding"
         else
-          redirect_to wedding_path(@wedding.id), notice: "Couldn't delete this wedding."
+          redirect_to user_weddings_path(current_user.id), notice: "Couldn't delete this wedding."
         end
       else
-        redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
+        redirect_to weddings_path, notice: "You are not authorized to edit this wedding"
       end
     else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end

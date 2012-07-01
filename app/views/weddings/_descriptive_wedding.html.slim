@@ -1,8 +1,25 @@
 .wedding-bar
-    = image_tag wedding.photo_url, style: "height: 175px"
-    = link_to wedding.name, wedding_path(wedding.id), class: "title"
-    p.bottom-bar
-      - if current_user.id == @wedding.user_id
-        = link_to "edit", edit_user_wedding_path(current_user.id, @wedding.id)
-        = link_to "delete", user_wedding_path(current_user.id, @wedding.id), confirm: "Are you sure?", method: :delete
-      = time_ago_in_words(Time.parse(wedding.created_at)) + " ago"
+  = image_tag wedding.photo_url, style: "height: 175px"
+  = link_to wedding.name, wedding_path(wedding.id), class: "title"
+  p.bottom-bar
+    - if @wedding.user_id == current_user.id
+        = link_to "edit", "#"
+    = time_ago_in_words(Time.parse(wedding.created_at)) + " ago"
+  - if current_user.id == @wedding.user_id
+    .wedding-details
+      = form_tag wedding_path(@wedding.id), method: "put" do
+        = label_tag("[wedding]name", "Wedding Plan Name")
+        br
+        = text_field_tag("[wedding]name", @wedding.name)
+        br
+        = label_tag("[wedding]photo_url", "Cover Photo")
+        br
+        = text_area_tag("[wedding]photo_url", @wedding.photo_url)
+        br
+        = label_tag("[wedding]description", "Description")
+        br
+        = text_area_tag("[wedding]description", @wedding.description)
+        = hidden_field_tag("wedding[user_id]", @wedding.user_id)
+        p
+        = submit_tag
+      = link_to "delete", wedding_path(@wedding.id), confirm: "Are you sure?", method: :delete

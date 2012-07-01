@@ -191,6 +191,25 @@ textarea {
   display: none;
 }
 
+.wedding-details {
+  margin: 10px;
+  display: none;
+  input[type="text"] {
+    width: 75%;
+  }
+  textarea {
+    width: 75%;
+    -webkit-appearance: textfield;
+    padding: 1px;
+    background-color: white;
+    border: 2px inset;
+    border-image: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    cursor: auto;
+  }
+}
+
 .time, .bottom-bar {
   text-align: right;
   margin-right: 10px;

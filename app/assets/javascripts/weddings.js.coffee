@@ -30,6 +30,10 @@ jQuery ->
       $('.search-box-list').masonry()
     false
 
+  $('.bottom-bar').children('a').click ->
+    $(this).parent().next('.wedding-details').slideToggle ->
+    false
+
 $(window).load ->
   $('.search-box-list').masonry
 
