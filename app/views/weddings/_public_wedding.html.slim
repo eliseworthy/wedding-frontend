@@ -1,0 +1,6 @@
+.wedding-bar
+  = image_tag wedding.photo_url, style: "height: 175px"
+  = link_to wedding.name, wedding_path(wedding.id), class: "title"
+  p.time
+    = time_ago_in_words(Time.parse(wedding.created_at)) + " ago"
+    = " by #{User.find(wedding.user_id).name}"

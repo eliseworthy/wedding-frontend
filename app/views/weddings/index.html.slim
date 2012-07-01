@@ -4,10 +4,13 @@
     br
     = link_to new_wedding_path do
       #plus Add Wedding Plan
+  - elsif params[:user_id]
+    h2#tag = "#{User.find(params[:user_id].name)}'s Wedding Plans"
   - else
-    h2#tag = "#{current_user.name}'s Wedding Plans"
+    h1 All Weddings
+
   - @weddings.each do |wedding|
-    = render "wedding", { wedding: wedding }
+    = render "public_wedding", { wedding: wedding }
   = will_paginate @weddings
 
 

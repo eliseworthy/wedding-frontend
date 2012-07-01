@@ -30,6 +30,9 @@ html
                 = form_tag(pins_path, method: "get") do
                   = text_field_tag(:search)
                   = submit_tag "Find"
+              #nav-item
+                = link_to "Browse Weddings", weddings_path
+
           - else
             h2#tag Register Now!
             .side-nav.threecol.last

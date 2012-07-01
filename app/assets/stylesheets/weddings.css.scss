@@ -6,21 +6,6 @@ $bright-pink: #FF3D7F;
 $main-border: $aqua;
 $h1: $bright-pink;
 
-* {
-    margin: 0;
-}
-
-html, body {
-    height: 100%;
-}
-
-.wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -450px; /* the bottom margin is the negative value of the footer's height */
-}
-
 body {
   background-color: #FAF8F5;
   background-image: -webkit-linear-gradient(0, transparent 50%, rgba(255,255,255,.5) 50%);
@@ -267,7 +252,5 @@ textarea {
   }
 }
 
-.footer, .push {
-    height: 450px; /* .push must be the same height as .footer */
-}
+
 
