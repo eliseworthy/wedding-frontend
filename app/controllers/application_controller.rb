@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def recent_weddings
-    @recent_weddings = WeddingRequest.find_all.reverse.first(3)
+    @recent_weddings = WeddingRequest.find_all.reverse.first(6)
   end
 
   private

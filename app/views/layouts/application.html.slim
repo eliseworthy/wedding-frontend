@@ -52,18 +52,12 @@ html
                   br
                   = f.submit "Register"
                   = link_to "Log In", login_path
-      .push
       .footer
         .container
           .row
-            h2 Recent Wedding Plans
-            .wedding-example.fourcol
-              h4 = link_to @recent_weddings.first.name, user_wedding_path(@recent_weddings.first.user_id, @recent_weddings.first.id)
-              = image_tag @recent_weddings.first.photo_url, width: "200px"
-            .wedding-example.fourcol
-              h4 = link_to @recent_weddings[1].name, user_wedding_path(@recent_weddings[1].user_id, @recent_weddings[1].id)
-              = image_tag @recent_weddings[1].photo_url, width: "200px"
-            .wedding-example.fourcol.last
-              h4 = link_to @recent_weddings[2].name, user_wedding_path(@recent_weddings[2].user_id, @recent_weddings[2].id)
-              = image_tag @recent_weddings[2].photo_url, width: "200px"
-
+            h3 Recently Added
+            - @recent_weddings.each do |wedding|
+              - if @recent_weddings[-1] == wedding
+                = render "weddings/last_wedding_example", wedding: wedding
+              - else
+                = render "weddings/wedding_example", wedding: wedding

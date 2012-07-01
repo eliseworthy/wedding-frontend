@@ -45,6 +45,9 @@ a {
   margin-left: 10px;
   padding-left: 5px;
   -webkit-box-shadow: 0 5px 2px -2px lightgray;
+  form {
+    margin-bottom: 5px;
+  }
 }
 
 //Root Path
@@ -62,8 +65,11 @@ a {
     padding-top: 5%;
     padding-right: 6%;
     font-size: 3em;
+    color: #FF5EAA;
+    line-height: 70px;
   }
   p {
+    font-size: 1.3em;
     color: gray;
     text-align: right;
     padding-right: 6%;
@@ -237,18 +243,21 @@ textarea {
 }
 
 .footer {
-  background-color: #88C9CA;
+  margin-top: 50px;
+  border-top: 1px solid $baby-pink;
+  background-color: #FBF8F5;
   h2 {
     margin-top: 20px;
     color: $bright-pink;
   }
   .wedding-example {
+    padding: 10px;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 40px;
-    min-height: 250px;
-    border: 1px solid $bright-pink;
+    border: 1px solid $baby-pink;
     background-color: white;
+    -webkit-box-shadow: 0 3px 2px -2px lightgray;
   }
 }
 
