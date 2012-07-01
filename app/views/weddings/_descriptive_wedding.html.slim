@@ -1,0 +1,8 @@
+.wedding-bar
+    = image_tag wedding.photo_url, style: "height: 175px"
+    = link_to wedding.name, wedding_path(wedding.id), class: "title"
+    p.bottom-bar
+      - if current_user.id == @wedding.user_id
+        = link_to "edit", edit_user_wedding_path(current_user.id, @wedding.id)
+        = link_to "delete", user_wedding_path(current_user.id, @wedding.id), confirm: "Are you sure?", method: :delete
+      = Time.parse(wedding.created_at).strftime("%m/%d/%Y %I:%M %p")

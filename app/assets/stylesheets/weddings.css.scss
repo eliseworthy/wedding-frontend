@@ -149,16 +149,17 @@ textarea {
   border: 1px solid $bright-pink;
   -webkit-box-shadow: 0 10px 2px -2px lightgray;
   margin-bottom: 30px;
-  min-height: 150px;
   background: white;
-  position: relative;
+  overflow:auto;
   padding: 0px;
+  position: relative;
   background-color: white;
   img {
     vertical-align: middle;
   }
-  a {
-    padding-left: 10px;
+  a.title {
+    padding: 20px;
+    margin-top: 90px;
     font-size: 2.5em;
     font-weight: bold;
     color: #9F937D;
@@ -166,13 +167,16 @@ textarea {
   }
 }
 
-.time {
+.bottom-bar {
   text-align: right;
   margin-right: 10px;
   position: absolute; bottom: 0; right: 0;
   font-style: italic;
   color: #C3B5AC;
   font-size: 12px;
+  a {
+    margin: 3px;
+  }
   }
 
 //Wedding show
