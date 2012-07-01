@@ -1,6 +1,6 @@
-.bar
-  = image_tag pin.url
-  p.time = Time.parse(pin.created_at).strftime("%m/%d/%Y %I:%M %p")
+.item-bar
+  .image
+    = image_tag pin.url, class: "pin"
   - if current_user
     = form_tag items_path do
   	  = hidden_field_tag("[item]name", pin.url)

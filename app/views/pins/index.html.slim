@@ -1,5 +1,11 @@
-#pins.bar-list.ninecol
-  h1 Wedding Ideas
-  - @pins.each do |pin|
-    = render "pin", { pin: pin }
-  = will_paginate @pins
+.bar-list.ninecol
+  h1 = @pins.first.description.capitalize
+  - @pins.in_groups_of(4, false) do |group|
+    .row
+      - group.uniq.each do |pin|
+        - if group[-1] == pin
+          .threecol.last
+            = render "pin", pin: pin
+        - else
+          .threecol
+            = render "pin", pin: pin

@@ -210,7 +210,10 @@ textarea {
   padding: 10px;
   border: 1px solid $baby-pink;
   position: relative;
-  height: 375px;
+
+  img.pin {
+    max-height: 325px;
+  }
   p.description {
     margin-bottom: 20px;
     margin-top: 10px;
@@ -218,7 +221,8 @@ textarea {
   -webkit-box-shadow: 0 3px 2px -2px lightgray;
   margin-bottom: 40px;
   .image {
-    height: 325px;
+
+    text-align: center;
   }
 }
 
