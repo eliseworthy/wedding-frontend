@@ -1,5 +1,6 @@
-#honeymoons.bar-list.ninecol
+.ninecol
   h1 Honeymoon Ideas
-  - @honeymoons.each do |honeymoon|
-    = render "honeymoon", { honeymoon: honeymoon }
-  = will_paginate @honeymoons
+  .search-box-list
+    - @honeymoons.each do |honeymoon|
+      = render "honeymoon", { honeymoon: honeymoon }
+

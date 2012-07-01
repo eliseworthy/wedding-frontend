@@ -1,5 +1,5 @@
 .ninecol
   h1 = @pins.first.description.capitalize
-  .pin-box-list
+  .search-box-list
     - @pins.each do |pin|
       = render "pin", pin: pin

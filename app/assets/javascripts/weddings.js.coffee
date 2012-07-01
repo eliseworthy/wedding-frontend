@@ -11,8 +11,8 @@ jQuery ->
         $.getScript(url)
     $(window).scroll()
 
-  $('.pin-box-list').imagesLoaded ->
-    $('.pin-box-list').masonry ->
+  $('.search-box-list').imagesLoaded ->
+    $('.search-box-list').masonry ->
       ({
         itemSelector : '.pin-box',
         columnWidth : 220,
@@ -20,10 +20,11 @@ jQuery ->
       })
   $('.heart').click ->
     $(this).parent().next('form').slideToggle ->
-      $('.pin-box-list').masonry()
-  $('.pin-box form select').change ->
+      $('.search-box-list').masonry()
+    false
+  $('.search-box form select').change ->
     $(this).parents('form').submit()
 
 $(window).load ->
-  $('.pin-box-list').masonry
+  $('.search-box-list').masonry
 
