@@ -7,3 +7,9 @@
     = text_field_tag("[item]description")
     = hidden_field_tag("[item]wedding_id", @wedding.id)
     = submit_tag
+.search-box
+  h3 Search for ideas
+  = form_tag(pins_path, method: "get") do
+    = text_field_tag(:search)
+    = submit_tag "Find"
+
