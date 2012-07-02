@@ -13,11 +13,16 @@ html
         h1 = link_to "Bridled", root_path
       .container
         .row
+          - if flash.any?
+            ul
+              - flash.each do |type, message|
+                li(class=type) = message
+        .row
           = yield
           - if current_user
             h2#tag My Account
             .side-nav.threecol.last
-              h4 = "Logged in as #{current_user.name}"
+              h4 = "Welcome, #{current_user.name}!"
               .nav-item
                 = link_to "My Wedding Plans", user_weddings_path(current_user.id)
               .nav-item

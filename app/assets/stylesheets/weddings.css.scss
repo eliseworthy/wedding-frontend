@@ -146,6 +146,15 @@ p, a, label, li {
   color: darkgray;
 }
 
+li.notice {
+  list-style-type: none;
+  color: $aqua;
+}
+li.error {
+  list-style-type: none;
+  color: red;
+}
+
 textarea {
   border:none;
 }

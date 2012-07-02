@@ -8,9 +8,10 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       UserMailer.signup_confirmation(@user.email).deliver
-      redirect_to root_url, notice: "Time to terrorize!"
+      flash[:notice] = "Thanks, #{current_user.name}! Your account was successfully created!"
+      redirect_to user_weddings_path(current_user.id)
     else
-      render "new"
+      render :new
     end
   end
 end

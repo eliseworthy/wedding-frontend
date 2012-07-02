@@ -12,7 +12,8 @@ class WeddingsController < ApplicationController
     @weddings = weddings.paginate(page: params[:page], per_page: 5)
 
     unless @weddings.respond_to?(:each)
-      redirect_to root_path, flash[:error] = @wedding # Where is @wedding being assigned?
+      flash[:error] = @weddings
+      redirect_to root_path
     end
   end
 
@@ -33,11 +34,15 @@ class WeddingsController < ApplicationController
       params[:wedding][:user_id] = current_user.id
       @wedding = WeddingRequest.create(params[:wedding])
       if @wedding.success?
-        redirect_to user_weddings_path(current_user.id), notice: "Successfully created wedding!"
+        flash[:notice] = "Successfully created #{@wedding.name}!"
+        redirect_to user_weddings_path(current_user.id)
       else
+        flash[:error] = "Unable to create wedding. See errors below."
         render :new
       end
-    else redirect_to root_path #
+    else
+      flash[:error] = "Please login to create weddings."
+      redirect_to root_path
     end
   end
 
@@ -50,14 +55,19 @@ class WeddingsController < ApplicationController
       if params[:wedding][:user_id].to_i == current_user.id
         response = WeddingRequest.update(params[:id], params[:wedding])
         if response.success?
-          redirect_to wedding_path(response.parsed_response[:id]), notice: "Successfully updated wedding!"
+          flash[:notice] = "Successfully updated wedding!"
+          redirect_to wedding_path(response.parsed_response[:id])
         else
-          redirect_to wedding_path(response.parsed_response[:id]), notice: "Couldn't update this wedding"
+          flash[:notice] = "Couldn't update this wedding"
+          redirect_to wedding_path(response.parsed_response[:id])
         end
       else
-        redirect_to user_weddings_path(current_user.id), notice: "You are not authorized to edit this wedding"
+        flash[:notice] = "You are not authorized to edit this wedding."
+        redirect_to user_weddings_path(current_user.id)
       end
-    else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
+    else
+      flash[:error] = "Please login to edit weddings."
+      redirect_to root_path
     end
   end
 
@@ -67,14 +77,19 @@ class WeddingsController < ApplicationController
       if @wedding.user_id == current_user.id
         response = WeddingRequest.destroy(params[:id])
         if response.success?
-          redirect_to user_weddings_path(current_user.id), notice: "Successfully deleted wedding"
+          flash[:notice] = "Successfully deleted wedding."
+          redirect_to user_weddings_path(current_user.id)
         else
-          redirect_to user_weddings_path(current_user.id), notice: "Couldn't delete this wedding."
+          flash[:notice] = "Couldn't delete this wedding."
+          redirect_to user_weddings_path(current_user.id)
         end
       else
-        redirect_to weddings_path, notice: "You are not authorized to edit this wedding"
+        flash[:notice = "You are not authorized to edit this wedding"
+        redirect_to weddings_path
       end
-    else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
+    else
+      flash[:error] = "Please login to delete weddings."
+      redirect_to root_path
     end
   end
 end

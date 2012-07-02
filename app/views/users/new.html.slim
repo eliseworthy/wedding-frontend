@@ -1,7 +1,10 @@
 .ninecol
   h1 Sign Up
   = form_for @user do |f|
-    render "new"
+    - if @user.errors.any?
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
     br
     = f.label :name
     br
