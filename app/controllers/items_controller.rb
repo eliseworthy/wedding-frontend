@@ -71,7 +71,7 @@ class ItemsController < ApplicationController
       if @wedding.user_id == current_user.id
         @item = ItemRequest.destroy(params[:id])
         if @item.success?
-          flash[:notice] = "Successfully deleted idea."]
+          flash[:notice] = "Successfully deleted idea."
           redirect_to wedding_path(@wedding.id)
         else
           flash[:notice] = "Couldn't delete this wedding item."
