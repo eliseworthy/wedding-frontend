@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :recent_weddings, except: [:create, :update]
+  before_filter :recent_weddings
 
   def authorize
     redirect_to login_url, alert: "Not authorized" if current_user.nil?

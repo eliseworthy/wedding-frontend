@@ -9,21 +9,23 @@ class ItemsController < ApplicationController
     # else
     #   render "/weddings/show", notice: @response[:error]
     # end
-
     if current_user
       @wedding = WeddingRequest.find(params[:item][:wedding_id])
       if @wedding.user_id == current_user.id
         params[:item][:wedding_id] = @wedding.id
+        if params[:item][:description].blank?
+          params[:item][:description] = "Search Results"
+        end
         @item = ItemRequest.create(params[:item])
         if @item.success?
           redirect_to wedding_path(@wedding.id), notice: "Successfully created item!"
         else
           @items = ItemRequest.find_all_by_wedding(@wedding.id)
-          render "/weddings/show", notice: "Unable to save item."
+          redirect_to :back, notice: "Unable to save item."
         end
       else
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
-        render "/weddings/show", notice: "Unauthorized to create items for this wedding"
+        redirect_to :back, notice: "Unauthorized to create items for this wedding"
       end
     else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
@@ -46,7 +48,7 @@ class ItemsController < ApplicationController
         end
       else
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
-        render "/weddings/show", notice: "Unauthorized to create items for this wedding"
+        redirect_to weddings_path(current_user.id), notice: "Unauthorized to create items for this wedding"
       end
     else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
@@ -65,7 +67,7 @@ class ItemsController < ApplicationController
         end
       else
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
-        render "/weddings/show", notice: "Unauthorized to delete items for this wedding"
+        redirect_to weddings_path(current_user.id), notice: "Unauthorized to delete items for this wedding"
       end
     else redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
