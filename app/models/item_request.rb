@@ -18,16 +18,16 @@ class ItemRequest
     end
   end
 
-  def self.create(attributes)
-    post("/items/", query: {item: attributes})
+  def self.create(item_attributes, api_key)
+    post("/items/", query: {item: item_attributes, api_key: api_key})
   end
 
-  def self.update(id, attributes)
-  	put("/items/#{id}", body: {item: attributes})
+  def self.update(id, item_attributes, api_key)
+  	put("/items/#{id}", body: {item: item_attributes, api_key: api_key})
   end
 
-  def self.destroy(id)
-    delete("/items/#{id}")
+  def self.destroy(id, api_key)
+    delete("/items/#{id}", body: {api_key: api_key})
   end
 
 end

@@ -18,10 +18,10 @@ class ItemsController < ApplicationController
         if params[:item][:description].blank?
           params[:item][:description] = "Search Results"
         end
-        @item = ItemRequest.create(params[:item])
+        @item = ItemRequest.create(params[:item], params[:api_key])
         if @item.success?
           flash[:notice] = "Successfully saved idea!"
-          redirect_to wedding_path(@wedding.id)
+          redirect_to :back
         else
           @items = ItemRequest.find_all_by_wedding(@wedding.id)
           flash[:error] = "Unable to save this idea."
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     if current_user
       @wedding = WeddingRequest.find(params[:item][:wedding_id])
       if @wedding.user_id == current_user.id
-        @item = ItemRequest.update(params[:id], params[:item])
+        @item = ItemRequest.update(params[:id], params[:item], params[:api_key])
         @wedding_id = params[:item][:wedding_id]
         if @item.success?
           flash[:notice] = "Successfully updated idea!"
@@ -71,12 +71,12 @@ class ItemsController < ApplicationController
       @item = ItemRequest.find(params[:id])
       @wedding = WeddingRequest.find(@item.wedding_id)
       if @wedding.user_id == current_user.id
-        @item = ItemRequest.destroy(params[:id])
+        @item = ItemRequest.destroy(params[:id], params[:api_key])
         if @item.success?
           flash[:notice] = "Successfully deleted idea."
           redirect_to wedding_path(@wedding.id)
         else
-          flash[:notice] = "Couldn't delete this wedding item."
+          flash[:error] = "Couldn't delete this wedding item."
           redirect_to wedding_path(@wedding.id)
         end
       else
