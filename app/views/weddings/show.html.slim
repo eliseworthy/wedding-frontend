@@ -1,7 +1,7 @@
 .ninecol
-  = render "weddings/descriptive_wedding", { wedding: @wedding }
+  = render "/weddings/descriptive_wedding", { wedding: @wedding }
   .search-box-list
     - @items.each do |item|
       = render "item", { item: item }
     - if @wedding.user_id == current_user.id
-      = render "add_item_bar"
+      = render "/weddings/add_item_bar"
