@@ -51,7 +51,6 @@ class WeddingsController < ApplicationController
   end
 
   def update
-    raise params.inspect
     if current_user
       if params[:wedding][:user_id].to_i == current_user.id
         response = WeddingRequest.update(params[:id], params[:wedding])
