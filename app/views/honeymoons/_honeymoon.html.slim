@@ -11,3 +11,6 @@
       = label_tag "Add to Wedding:"
       = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
       = image_submit_tag 'https://s3.amazonaws.com/bride-items/add.png', class: "add-item"
+  - else
+    = link_to(image_tag('https://s3.amazonaws.com/bride-items/add-favorite.png', class: "non-logged-in-heart"), signup_path(error: "Please create an account or login to save ideas!"))
+
