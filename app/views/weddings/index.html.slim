@@ -5,7 +5,7 @@
     = link_to new_wedding_path do
       #plus Add Wedding Plan
   - elsif params[:user_id]
-    h2#tag = "#{User.find(params[:user_id].name)}'s Wedding Plans"
+    h2#tag = "#{User.find(params[:user_id]).name}'s Wedding Plans"
   - else
     h1 All Weddings
 

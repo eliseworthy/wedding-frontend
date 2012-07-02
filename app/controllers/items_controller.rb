@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
         @wedding_id = params[:item][:wedding_id]
         if @item.success?
           flash[:notice] = "Successfully updated idea!"
-          redirect_to wedding_path(@wedding_id),
+          redirect_to wedding_path(@wedding_id)
         else
           flash[:error] = "Couldn't update this idea."
           redirect_to wedding_path(@wedding_id)

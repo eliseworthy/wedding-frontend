@@ -1,6 +1,6 @@
 class WeddingsController < ApplicationController
 
-  before_filter :authorize, only: [:edit, :update, :create, :show, :destroy]
+  before_filter :authorize, only: [:edit, :update, :create, :destroy]
 
   def index
     weddings = if params[:user_id]

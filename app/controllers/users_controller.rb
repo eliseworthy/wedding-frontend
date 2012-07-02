@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    flash[:error] = params[:error]
     @user = User.new
   end
 
