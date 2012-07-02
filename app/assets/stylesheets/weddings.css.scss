@@ -22,7 +22,14 @@ a {
   padding-bottom: 20px;
   margin-bottom: 30px;
   height: 80px;
-  background-color: #FBF8F5;
+  .nav-image {
+    background: url("https://s3.amazonaws.com/bride-items/bridled-ring.png") no-repeat;
+    background-position: 42.5%;
+    h1 {
+      text-shadow: 2px 2px lightgray;
+    }
+  }
+
   border-bottom: 1px solid #B8C45A;
   -webkit-box-shadow: 0 4px 2px -2px lightgray;
 }
