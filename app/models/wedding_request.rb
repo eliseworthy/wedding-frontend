@@ -24,15 +24,15 @@ class WeddingRequest
     end
   end
 
-  def self.update(id, attributes)
-    put("/weddings/#{id}", query: {wedding: attributes})
+  def self.update(id, attributes, api_key)
+    put("/weddings/#{id}", query: {wedding: attributes, api_key: api_key})
   end
 
-  def self.create(attributes)
-    post("/weddings/", query: {wedding: attributes})
+  def self.create(wedding_attributes, api_key)
+    post("/weddings/", query: {wedding: wedding_attributes, api_key: api_key})
   end
 
-  def self.destroy(id)
-    response = delete("/weddings/#{id}")
+  def self.destroy(id, api_key)
+    response = delete("/weddings/#{id}", query: {api_key: api_key})
   end
 end

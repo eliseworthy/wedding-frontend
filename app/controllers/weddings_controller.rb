@@ -27,13 +27,12 @@ class WeddingsController < ApplicationController
   end
 
   def new
-    @wedding = WeddingRequest.create(params[:wedding])
   end
 
   def create
     if current_user
       params[:wedding][:user_id] = current_user.id
-      response = WeddingRequest.create(params[:wedding])
+      response = WeddingRequest.create(params[:wedding], params[:api_key])
       if response.success?
         flash[:notice] = "Successfully created wedding!"
         redirect_to user_weddings_path(current_user.id)
@@ -54,13 +53,13 @@ class WeddingsController < ApplicationController
   def update
     if current_user
       if params[:wedding][:user_id].to_i == current_user.id
-        response = WeddingRequest.update(params[:id], params[:wedding])
+        response = WeddingRequest.update(params[:id], params[:wedding], params[:api_key])
         if response.success?
           flash[:notice] = "Successfully updated wedding!"
           redirect_to wedding_path(response.parsed_response[:id])
         else
           flash[:notice] = "Couldn't update this wedding"
-          redirect_to wedding_path(response.parsed_response[:id])
+          redirect_to wedding_path(params[:wedding][:id])
         end
       else
         flash[:notice] = "You are not authorized to edit this wedding."
@@ -76,7 +75,7 @@ class WeddingsController < ApplicationController
     if current_user
       @wedding = WeddingRequest.find(params[:id])
       if @wedding.user_id == current_user.id
-        response = WeddingRequest.destroy(params[:id])
+        response = WeddingRequest.destroy(params[:id], params[:api_key])
         if response.success?
           flash[:notice] = "Successfully deleted wedding."
           redirect_to user_weddings_path(current_user.id)
