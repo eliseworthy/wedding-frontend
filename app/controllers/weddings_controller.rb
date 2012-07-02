@@ -84,7 +84,7 @@ class WeddingsController < ApplicationController
           redirect_to user_weddings_path(current_user.id)
         end
       else
-        flash[:notice = "You are not authorized to edit this wedding"
+        flash[:notice] = "You are not authorized to edit this wedding"
         redirect_to weddings_path
       end
     else
