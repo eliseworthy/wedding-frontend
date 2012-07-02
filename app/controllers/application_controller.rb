@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def set_key
+    params[:api_key] = current_user.api_key
+  end
+  helper_method :set_key
 end

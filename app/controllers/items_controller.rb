@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  before_filter :set_key, only: [:edit, :update, :create, :destroy]
+
   def create
     # TODO Refactor to:
 
