@@ -34,6 +34,10 @@ a {
   -webkit-box-shadow: 0 4px 2px -2px lightgray;
 }
 
+a, input[type="submit"] {
+  cursor: pointer;
+ }
+
 #nav-links {
   margin-right: 3.5%;
   float: right;
