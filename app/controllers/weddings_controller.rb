@@ -32,9 +32,9 @@ class WeddingsController < ApplicationController
   def create
     if current_user
       params[:wedding][:user_id] = current_user.id
-      @wedding = WeddingRequest.create(params[:wedding])
-      if @wedding.success?
-        flash[:notice] = "Successfully created #{@wedding.name}!"
+      response = WeddingRequest.create(params[:wedding])
+      if response.success?
+        flash[:notice] = "Successfully created wedding!"
         redirect_to user_weddings_path(current_user.id)
       else
         flash[:error] = "Unable to create wedding. See errors below."
