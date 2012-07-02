@@ -156,6 +156,12 @@ textarea {
   margin-bottom: 10px;
 }
 
+.add-item {
+  display: inline-block;
+  margin: 0 74;
+  margin-top: 10px;
+}
+
 #wedding-ideas {
   margin-top: 10px;
   #search {
@@ -286,6 +292,12 @@ img.wed-heart {
   margin-top: 0;
   padding-bottom: 10px;
   }
+
+form.from-wed {
+  select {
+    width: 175px;
+  }
+}
 
 .search-box {
   width: 180px;

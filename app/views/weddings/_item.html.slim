@@ -17,16 +17,19 @@
         = hidden_field_tag("[item]photo_url", item.photo_url)
         = label_tag("[item]description", "Description")
         = text_field_tag("[item]description", item.description)
+        br
         - if item.url
           = label_tag("[item]url", "URL")
+          br
           = text_field_tag("[item]url", item.url)
         = submit_tag
       = link_to "delete", item_path(item.id), confirm: "Are you sure?", method: :delete
     .add-from-wed
-      = form_tag items_path do
+      = form_tag items_path, class: "from-wed" do
         = hidden_field_tag("[item]photo_url", item.photo_url)
         = hidden_field_tag("[item]description", item.description)
         = label_tag "Add to Wedding:"
         = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
+        = image_submit_tag 'https://s3.amazonaws.com/bride-items/add.png', class: "add-item"
 
 
