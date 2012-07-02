@@ -96,16 +96,17 @@ a {
     margin-right: 6%;
     float: right;
     position: relative;
-    #browse {
-      padding-right: 1px;
-      text-align: right;
-      a {
-        color: #301800;
-        text-decoration: none;
-      }
-      a:hover {
-        color: $baby-pink;
-      }
+    }
+  #browse {
+    text-align: right;
+    position: relative;
+    bottom: -55; left: 225;
+    a {
+      color: #301800;
+      text-decoration: none;
+    }
+    a:hover {
+      color: $baby-pink;
     }
   }
 }
