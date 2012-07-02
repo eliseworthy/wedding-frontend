@@ -39,16 +39,19 @@ a {
 }
 
 #reg-link {
-  margin-left: 5px;
+  text-align: center;
 }
 
 #form {
+  margin-left: 20px;
   display: none;
 }
 
 #login-form {
+  margin-left: 20px;
   display: none;
 }
+
 
 .nav-item {
   border: 1px solid $baby-pink;
@@ -134,7 +137,7 @@ h4, h4 a {
   line-height: 30px;
 }
 
-p, a, label {
+p, a, label, li {
   font-family: 'Cabin', Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 25px;

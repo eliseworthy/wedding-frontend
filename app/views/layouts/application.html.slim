@@ -38,7 +38,7 @@ html
           - else
             .side-nav.threecol.last
               .nav-item
-                h2#reg-link = link_to "Register Now!", "#"
+                h3#reg-link = link_to "Login or Register", "#"
                 #form
                   = form_for User.new do |f|
                     = f.label :name
