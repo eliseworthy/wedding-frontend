@@ -8,7 +8,7 @@
       = hidden_field_tag("[item]photo_url", honeymoon.image_url)
       = hidden_field_tag("[item]url", honeymoon.url)
       = hidden_field_tag("[item]description", honeymoon.location)
-      = label_tag "Add to Wedding:"
+      = label_tag "Add to Wedding Plan:"
       = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
       = image_submit_tag 'https://s3.amazonaws.com/bride-items/add.png', class: "add-item"
   - else

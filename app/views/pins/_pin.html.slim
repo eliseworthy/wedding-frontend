@@ -6,7 +6,7 @@
     = form_tag items_path, class: "search" do
       = hidden_field_tag("[item]photo_url", pin.url)
       = hidden_field_tag("[item]description", pin.description)
-      = label_tag "Add to Wedding:"
+      = label_tag "Add to Wedding Plan:"
       = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
       = image_submit_tag 'https://s3.amazonaws.com/bride-items/add.png', class: "add-item"
   - else
