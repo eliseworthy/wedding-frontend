@@ -84,8 +84,10 @@ a {
     line-height: 70px;
   }
   p {
-    font-size: 1.3em;
-    color: gray;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #301800;
     text-align: right;
     padding-right: 6%;
   }
@@ -95,11 +97,10 @@ a {
     float: right;
     position: relative;
     #browse {
-      padding-top: 5px;
       padding-right: 1px;
       text-align: right;
       a {
-        color: gray;
+        color: #301800;
         text-decoration: none;
       }
       a:hover {
