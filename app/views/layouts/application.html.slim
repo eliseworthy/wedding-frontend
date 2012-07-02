@@ -76,6 +76,19 @@ html
                     br
                     = submit_tag "Log In"
                     = link_to "or register", '#', id: "register"
+              h3#tag Collect Ideas
+              .nav-item
+                = link_to "Destination Search", honeymoons_path
+              .nav-item
+                p Picture Search
+                = form_tag(pins_path, method: "get") do
+                  = text_field_tag(:search)
+                  = submit_tag "Find"
+              .nav-item
+                = link_to "Browse Weddings", weddings_path
+              .nav-item
+                = link_to "Browse Picture Searches", pins_path
+
 
       .footer
         .container
