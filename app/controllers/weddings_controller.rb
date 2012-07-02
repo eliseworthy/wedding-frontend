@@ -17,6 +17,9 @@ class WeddingsController < ApplicationController
   end
 
   def show
+    if current_user
+      @weddings = WeddingRequest.find_all(user_id: current_user.id)
+    end
     @wedding = WeddingRequest.find(params[:id])
     @items =  ItemRequest.find_all_by_wedding(@wedding.id)
   end

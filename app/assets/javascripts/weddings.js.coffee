@@ -22,11 +22,17 @@ jQuery ->
     $(this).parent().next('form').slideToggle ->
       $('.search-box-list').masonry()
     false
+
   $('.search-box form select').change ->
     $(this).parents('form').submit()
 
   $('.show-details').children('a').click ->
-    $(this).parent().next('.details').slideToggle ->
+    $(this).parent().parent().children('.details').slideToggle ->
+      $('.search-box-list').masonry()
+    false
+
+  $('.wed-heart').click ->
+    $(this).parent().parent().children('.add-from-wed').slideToggle ->
       $('.search-box-list').masonry()
     false
 

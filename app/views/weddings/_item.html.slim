@@ -1,12 +1,16 @@
 .search-box
   .image
     = image_tag item.photo_url
-    p.description = item.description
+    - if @wedding.user_id == current_user.id
+      p.description = item.description
+      p.show-details
+        = link_to "details", "#"
+    - else
+      p.description-heart = item.description
+      = link_to(image_tag('https://s3.amazonaws.com/bride-items/add-favorite.png', class: "wed-heart"), "#")
+
     p.bottom-bar
       = time_ago_in_words(Time.parse(item.created_at)) + " ago"
-    p.show-details
-      - if @wedding.user_id == current_user.id
-        = link_to "details", "#"
     .details
       = form_tag item_path(item.id), method: :put do
         = hidden_field_tag("[item]wedding_id", @wedding.id)
@@ -18,3 +22,11 @@
           = text_field_tag("[item]url", item.url)
         = submit_tag
       = link_to "delete", item_path(item.id), confirm: "Are you sure?", method: :delete
+    .add-from-wed
+      = form_tag items_path do
+        = hidden_field_tag("[item]photo_url", item.photo_url)
+        = hidden_field_tag("[item]description", item.description)
+        = label_tag "Add to Wedding:"
+        = select_tag "[item]wedding_id", options_for_select(@weddings.map{|wedding| [wedding.name, wedding.id]})
+
+
