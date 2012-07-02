@@ -13,7 +13,7 @@ class WeddingsController < ApplicationController
     @weddings = weddings.paginate(page: params[:page], per_page: 5)
 
     unless @weddings.respond_to?(:each)
-      flash[:error] = @weddings
+      flash.now[:error] = @weddings
       redirect_to root_path
     end
   end
@@ -34,14 +34,14 @@ class WeddingsController < ApplicationController
       params[:wedding][:user_id] = current_user.id
       response = WeddingRequest.create(params[:wedding], params[:api_key])
       if response.success?
-        flash[:notice] = "Successfully created wedding!"
+        flash.now[:notice] = "Successfully created wedding!"
         redirect_to user_weddings_path(current_user.id)
       else
-        flash[:error] = "Unable to create wedding. See errors below."
+        flash.now[:error] = "Unable to create wedding. See errors below."
         render :new
       end
     else
-      flash[:error] = "Please login to create weddings."
+      flash.now[:error] = "Please login to create weddings."
       redirect_to root_path
     end
   end
@@ -55,18 +55,18 @@ class WeddingsController < ApplicationController
       if params[:wedding][:user_id].to_i == current_user.id
         response = WeddingRequest.update(params[:id], params[:wedding], params[:api_key])
         if response.success?
-          flash[:notice] = "Successfully updated wedding!"
+          flash.now[:notice] = "Successfully updated wedding!"
           redirect_to wedding_path(response.parsed_response[:id])
         else
-          flash[:notice] = "Couldn't update this wedding"
+          flash.now[:notice] = "Couldn't update this wedding"
           redirect_to wedding_path(params[:wedding][:id])
         end
       else
-        flash[:notice] = "You are not authorized to edit this wedding."
+        flash.now[:notice] = "You are not authorized to edit this wedding."
         redirect_to user_weddings_path(current_user.id)
       end
     else
-      flash[:error] = "Please login to edit weddings."
+      flash.now[:error] = "Please login to edit weddings."
       redirect_to root_path
     end
   end
@@ -77,18 +77,18 @@ class WeddingsController < ApplicationController
       if @wedding.user_id == current_user.id
         response = WeddingRequest.destroy(params[:id], params[:api_key])
         if response.success?
-          flash[:notice] = "Successfully deleted wedding."
+          flash.now[:notice] = "Successfully deleted wedding."
           redirect_to user_weddings_path(current_user.id)
         else
-          flash[:notice] = "Couldn't delete this wedding."
+          flash.now[:notice] = "Couldn't delete this wedding."
           redirect_to user_weddings_path(current_user.id)
         end
       else
-        flash[:notice] = "You are not authorized to edit this wedding"
+        flash.now[:notice] = "You are not authorized to edit this wedding"
         redirect_to weddings_path
       end
     else
-      flash[:error] = "Please login to delete weddings."
+      flash.now[:error] = "Please login to delete weddings."
       redirect_to root_path
     end
   end

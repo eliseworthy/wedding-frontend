@@ -57,6 +57,4 @@ jQuery ->
 
 $(window).load ->
   $('.search-box-list').masonry
-  $('.notice').hide(2000)
-  $('.error').hide(2000)
 

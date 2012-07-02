@@ -20,20 +20,20 @@ class ItemsController < ApplicationController
         end
         @item = ItemRequest.create(params[:item], params[:api_key])
         if @item.success?
-          flash[:notice] = "Successfully saved idea!"
+          flash.now[:notice] = "Successfully saved idea!"
           redirect_to :back
         else
           @items = ItemRequest.find_all_by_wedding(@wedding.id)
-          flash[:error] = "Unable to save this idea."
+          flash.now[:error] = "Unable to save this idea."
           redirect_to :back
         end
       else
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
-        flash[:error] = "You are not authorized to save ideas to this wedding."
+        flash.now[:error] = "You are not authorized to save ideas to this wedding."
         redirect_to :back
       end
     else
-      flash[:error] = "Please login to save ideas."
+      flash.now[:error] = "Please login to save ideas."
       redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
   end
@@ -49,19 +49,19 @@ class ItemsController < ApplicationController
         @item = ItemRequest.update(params[:id], params[:item], params[:api_key])
         @wedding_id = params[:item][:wedding_id]
         if @item.success?
-          flash[:notice] = "Successfully updated idea!"
+          flash.now[:notice] = "Successfully updated idea!"
           redirect_to wedding_path(@wedding_id)
         else
-          flash[:error] = "Couldn't update this idea."
+          flash.now[:error] = "Couldn't update this idea."
           redirect_to wedding_path(@wedding_id)
         end
       else
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
-        flash[:error] = "You are not authorized to save ideas to this wedding."
+        flash.now[:error] = "You are not authorized to save ideas to this wedding."
         redirect_to weddings_path(current_user.id)
       end
     else
-      flash[:error] = "Please login to save ideas."
+      flash.now[:error] = "Please login to save ideas."
       redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
   end
@@ -73,19 +73,19 @@ class ItemsController < ApplicationController
       if @wedding.user_id == current_user.id
         @item = ItemRequest.destroy(params[:id], params[:api_key])
         if @item.success?
-          flash[:notice] = "Successfully deleted idea."
+          flash.now[:notice] = "Successfully deleted idea."
           redirect_to wedding_path(@wedding.id)
         else
-          flash[:error] = "Couldn't delete this wedding item."
+          flash.now[:error] = "Couldn't delete this wedding item."
           redirect_to wedding_path(@wedding.id)
         end
       else
         @items = ItemRequest.find_all_by_wedding(@wedding.id)
-        flash[:error] = "You are not authorized to delete ideas for this wedding."
+        flash.now[:error] = "You are not authorized to delete ideas for this wedding."
         redirect_to weddings_path(current_user.id)
       end
     else
-      flash[:error] = "Please login to delete ideas."
+      flash.now[:error] = "Please login to delete ideas."
       redirect_to root_path # This is repeated, put it in a before filter and call it on certain actions
     end
   end
