@@ -55,6 +55,4 @@ jQuery ->
     $('#login-form').hide()
     $('#form').show()
 
-$(window).load ->
-  $('.search-box-list').masonry
 
