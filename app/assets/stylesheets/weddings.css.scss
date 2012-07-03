@@ -79,7 +79,7 @@ a, input[type="submit"] {
 //Root Path
 
 #callout {
-  background: url("/assets/resized.png");
+  background: url("/assets/resized.png") no-repeat;
   min-height: 300px;
   background-color: white;
   -webkit-border-radius: 5px;
@@ -87,20 +87,20 @@ a, input[type="submit"] {
   border-radius: 5px;
   border: 1px solid $main-border;
   h1 {
-    text-align: right;
+    text-align: left;
     padding-top: 5%;
-    padding-right: 6%;
-    font-size: 3em;
+    padding-left: 45%;
+    font-size: 2.6em;
     color: #FF5EAA;
     line-height: 70px;
   }
   p {
-    font-size: 1em;
+    font-size: 1.2em;
     font-weight: bold;
     line-height: 1.5;
     color: #301800;
-    text-align: right;
-    padding-right: 6%;
+    text-align: left;
+    padding-left: 45%;
   }
   #sign-up {
     margin-top: 10px;
