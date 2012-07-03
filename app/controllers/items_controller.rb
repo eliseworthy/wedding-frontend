@@ -3,14 +3,6 @@ class ItemsController < ApplicationController
   before_filter :set_key, only: [:edit, :update, :create, :destroy]
 
   def create
-    # TODO Refactor to:
-
-    # @response = ItemRequest.create(params[:item])
-    # if @response.success?
-    #   redirect_to wedding_path(@wedding.id), notice: "Successfully created item!"
-    # else
-    #   render "/weddings/show", notice: @response[:error]
-    # end
     if current_user
       @wedding = WeddingRequest.find(params[:item][:wedding_id])
       if @wedding.user_id == current_user.id
@@ -20,7 +12,7 @@ class ItemsController < ApplicationController
         end
         @item = ItemRequest.create(params[:item], params[:api_key])
         if @item.success?
-          flash.now[:notice] = "Successfully saved idea!"
+          flash[:notice] = "Successfully saved idea!"
           redirect_to :back
         else
           @items = ItemRequest.find_all_by_wedding(@wedding.id)
