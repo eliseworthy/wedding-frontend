@@ -1,6 +1,6 @@
 class WeddingsController < ApplicationController
 
-  before_filter :authorize, only: [:edit, :update, :create, :destroy]
+  before_filter :require_login, only: [:update, :create, :destroy]
   before_filter :set_key, only: [:edit, :update, :create, :destroy]
 
   def index
@@ -30,19 +30,14 @@ class WeddingsController < ApplicationController
   end
 
   def create
-    if current_user
-      params[:wedding][:user_id] = current_user.id
-      response = WeddingRequest.create(params[:wedding], params[:api_key])
-      if response.success?
-        flash.now[:notice] = "Successfully created wedding!"
-        redirect_to user_weddings_path(current_user.id)
-      else
-        flash.now[:error] = "Unable to create wedding. See errors below."
-        render :new
-      end
+    params[:wedding][:user_id] = current_user.id
+    response = WeddingRequest.create(params[:wedding], params[:api_key])
+    if response.success?
+      flash.now[:notice] = "Successfully created wedding!"
+      redirect_to user_weddings_path(current_user.id)
     else
-      flash.now[:error] = "Please login to create weddings."
-      redirect_to root_path
+      flash.now[:error] = "Unable to create wedding. See errors below."
+      render :new
     end
   end
 
@@ -51,45 +46,35 @@ class WeddingsController < ApplicationController
   end
 
   def update
-    if current_user
-      if params[:wedding][:user_id].to_i == current_user.id
-        response = WeddingRequest.update(params[:id], params[:wedding], params[:api_key])
-        if response.success?
-          flash.now[:notice] = "Successfully updated wedding!"
-          redirect_to wedding_path(response.parsed_response[:id])
-        else
-          flash.now[:notice] = "Couldn't update this wedding"
-          redirect_to wedding_path(params[:wedding][:id])
-        end
+    if params[:wedding][:user_id].to_i == current_user.id
+      response = WeddingRequest.update(params[:id], params[:wedding], params[:api_key])
+      if response.success?
+        flash.now[:notice] = "Successfully updated wedding!"
+        redirect_to wedding_path(response.parsed_response[:id])
       else
-        flash.now[:notice] = "You are not authorized to edit this wedding."
-        redirect_to user_weddings_path(current_user.id)
+        flash.now[:notice] = "Couldn't update this wedding"
+        redirect_to wedding_path(params[:wedding][:id])
       end
     else
-      flash.now[:error] = "Please login to edit weddings."
-      redirect_to root_path
+      flash.now[:notice] = "You are not authorized to edit this wedding."
+      redirect_to user_weddings_path(current_user.id)
     end
   end
 
   def destroy
-    if current_user
-      @wedding = WeddingRequest.find(params[:id])
-      if @wedding.user_id == current_user.id
-        response = WeddingRequest.destroy(params[:id], params[:api_key])
-        if response.success?
-          flash.now[:notice] = "Successfully deleted wedding."
-          redirect_to user_weddings_path(current_user.id)
-        else
-          flash.now[:notice] = "Couldn't delete this wedding."
-          redirect_to user_weddings_path(current_user.id)
-        end
+    @wedding = WeddingRequest.find(params[:id])
+    if @wedding.user_id == current_user.id
+      response = WeddingRequest.destroy(params[:id], params[:api_key])
+      if response.success?
+        flash.now[:notice] = "Successfully deleted wedding."
+        redirect_to user_weddings_path(current_user.id)
       else
-        flash.now[:notice] = "You are not authorized to edit this wedding"
-        redirect_to weddings_path
+        flash.now[:notice] = "Couldn't delete this wedding."
+        redirect_to user_weddings_path(current_user.id)
       end
     else
-      flash.now[:error] = "Please login to delete weddings."
-      redirect_to root_path
+      flash.now[:notice] = "You are not authorized to edit this wedding"
+      redirect_to weddings_path
     end
   end
 end

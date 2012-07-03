@@ -39,4 +39,6 @@ WeddingFrontend::Application.configure do
     :host => '127.0.0.1',
     :port => 3000
   }
+
+  ENV["REDISTOGO_URL"] = "redis://redistogo:9d53f03ea959f18e6dc58338e4b733cc@koi.redistogo.com:9396/"
 end
