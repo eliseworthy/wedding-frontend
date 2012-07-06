@@ -26,6 +26,8 @@ group :test do
   gem 'guard-spork'
   gem 'factory_girl_rails', '~> 3.4.0'
   gem 'capybara'
+  gem 'vcr'
+  gem 'fakeweb'
 end
 
 # Gems used only for assets and not required
